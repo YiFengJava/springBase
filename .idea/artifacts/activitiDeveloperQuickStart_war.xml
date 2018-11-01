@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="activitiDeveloperQuickStart:war">
-    <output-path>$PROJECT_DIR$/activitiDeveloperQuickStart/target</output-path>
-    <root id="archive" name="activitiDeveloperQuickStart-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="activitiDeveloperQuickStart:war exploded" />
-    </root>
-  </artifact>
-</component>

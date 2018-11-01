@@ -10,16 +10,15 @@
         <module name="exeCXFStringBoot" />
         <module name="exeSpringBoot" />
         <module name="myFirstSpringBootProject" />
-        <module name="myFirstSpringProject" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="activitiDeveloperQuickStart" target="1.8" />
-      <module name="exeCXFStringBoot" target="1.8" />
+      <module name="activitiDeveloperQuickStart" target="1.5" />
+      <module name="exeCXFStringBoot" target="1.5" />
       <module name="exeSpringBoot" target="1.8" />
       <module name="myFirstSpringBootProject" target="1.8" />
-      <module name="myFirstSpringProject" target="1.5" />
-      <module name="mySpringBase" target="1.8" />
+      <module name="mySpringBase" target="1.5" />
+      <module name="springSecurityStudy" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

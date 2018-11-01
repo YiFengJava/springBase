@@ -11,6 +11,6 @@ import java.lang.annotation.*;
 @Configuration  //1 元注解
 @ComponentScan  //2 元注解
 public @interface WyYdConfigutation {
-    String[] value() default {}; //3 覆盖value参数
+    String[] value() default {}; //3 覆盖value参数gfg
 }
 
