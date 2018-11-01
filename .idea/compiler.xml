@@ -10,6 +10,10 @@
         <module name="exeCXFStringBoot" />
         <module name="exeSpringBoot" />
         <module name="myFirstSpringBootProject" />
+        <module name="securityapp" />
+        <module name="securitybrowser" />
+        <module name="securitycore" />
+        <module name="securitydemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +22,10 @@
       <module name="exeSpringBoot" target="1.8" />
       <module name="myFirstSpringBootProject" target="1.8" />
       <module name="mySpringBase" target="1.5" />
+      <module name="securityapp" target="1.8" />
+      <module name="securitybrowser" target="1.8" />
+      <module name="securitycore" target="1.8" />
+      <module name="securitydemo" target="1.8" />
       <module name="springSecurityStudy" target="1.8" />
     </bytecodeTargetLevel>
   </component>

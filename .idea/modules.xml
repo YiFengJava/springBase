@@ -7,6 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/exeSpringBoot/exeSpringBoot.iml" filepath="$PROJECT_DIR$/exeSpringBoot/exeSpringBoot.iml" />
       <module fileurl="file://$PROJECT_DIR$/myFirstSpringBootProject/myFirstSpringBootProject.iml" filepath="$PROJECT_DIR$/myFirstSpringBootProject/myFirstSpringBootProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/mySpringBase.iml" filepath="$PROJECT_DIR$/mySpringBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springSecurityStudy/securityapp/securityapp.iml" filepath="$PROJECT_DIR$/springSecurityStudy/securityapp/securityapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springSecurityStudy/securitybrowser/securitybrowser.iml" filepath="$PROJECT_DIR$/springSecurityStudy/securitybrowser/securitybrowser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springSecurityStudy/securitycore/securitycore.iml" filepath="$PROJECT_DIR$/springSecurityStudy/securitycore/securitycore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springSecurityStudy/securitydemo/securitydemo.iml" filepath="$PROJECT_DIR$/springSecurityStudy/securitydemo/securitydemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/springSecurityStudy/springSecurityStudy.iml" filepath="$PROJECT_DIR$/springSecurityStudy/springSecurityStudy.iml" />
     </modules>
   </component>
