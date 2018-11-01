@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="activitiDeveloperQuickStart" />
+        <module name="exeCXFStringBoot" />
+        <module name="exeSpringBoot" />
+        <module name="myFirstSpringBootProject" />
+        <module name="myFirstSpringProject" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="activitiDeveloperQuickStart" target="1.8" />
+      <module name="exeCXFStringBoot" target="1.8" />
+      <module name="exeSpringBoot" target="1.8" />
+      <module name="myFirstSpringBootProject" target="1.8" />
+      <module name="myFirstSpringProject" target="1.5" />
+      <module name="mySpringBase" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

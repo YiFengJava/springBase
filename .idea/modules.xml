@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/activitiDeveloperQuickStart/activitiDeveloperQuickStart.iml" filepath="$PROJECT_DIR$/activitiDeveloperQuickStart/activitiDeveloperQuickStart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exeCXFStringBoot/exeCXFStringBoot.iml" filepath="$PROJECT_DIR$/exeCXFStringBoot/exeCXFStringBoot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exeSpringBoot/exeSpringBoot.iml" filepath="$PROJECT_DIR$/exeSpringBoot/exeSpringBoot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myFirstSpringBootProject/myFirstSpringBootProject.iml" filepath="$PROJECT_DIR$/myFirstSpringBootProject/myFirstSpringBootProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mySpringBase.iml" filepath="$PROJECT_DIR$/mySpringBase.iml" />
+    </modules>
+  </component>
+</project>
