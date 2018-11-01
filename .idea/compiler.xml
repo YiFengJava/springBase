@@ -25,7 +25,7 @@
       <module name="securityapp" target="1.8" />
       <module name="securitybrowser" target="1.8" />
       <module name="securitycore" target="1.8" />
-      <module name="securitydemo" target="1.8" />
+      <module name="securitydemo" target="1.5" />
       <module name="springSecurityStudy" target="1.8" />
     </bytecodeTargetLevel>
   </component>

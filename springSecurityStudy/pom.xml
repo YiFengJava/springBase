@@ -14,6 +14,7 @@
     </modules>
     <artifactId>springSecurityStudy</artifactId>
     <groupId>com.yd</groupId>
+    <version>1.0-SNAPSHOT</version>
     <!-- Inherit defaults from Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
