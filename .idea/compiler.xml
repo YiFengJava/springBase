@@ -18,7 +18,7 @@
       <module name="exeSpringBoot" target="1.8" />
       <module name="myFirstSpringBootProject" target="1.8" />
       <module name="mySpringBase" target="1.5" />
-      <module name="springSecurityStudy" target="1.5" />
+      <module name="springSecurityStudy" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
