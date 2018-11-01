@@ -1,5 +1,6 @@
 package com.client;
 
+
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import org.apache.cxf.jaxrs.client.JAXRSClientFactoryBean;
 

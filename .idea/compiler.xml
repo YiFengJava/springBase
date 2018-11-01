@@ -18,7 +18,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="activitiDeveloperQuickStart" target="1.5" />
-      <module name="exeCXFStringBoot" target="1.5" />
+      <module name="exeCXFStringBoot" target="1.8" />
       <module name="exeSpringBoot" target="1.8" />
       <module name="myFirstSpringBootProject" target="1.8" />
       <module name="mySpringBase" target="1.5" />
