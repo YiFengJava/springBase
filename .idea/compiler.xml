@@ -18,6 +18,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="activitiDeveloperQuickStart" target="1.5" />
+      <module name="demo" target="1.8" />
       <module name="exeCXFStringBoot" target="1.8" />
       <module name="exeSpringBoot" target="1.8" />
       <module name="myFirstSpringBootProject" target="1.8" />
@@ -25,8 +26,9 @@
       <module name="securityapp" target="1.8" />
       <module name="securitybrowser" target="1.8" />
       <module name="securitycore" target="1.8" />
-      <module name="securitydemo" target="1.5" />
+      <module name="securitydemo" target="1.8" />
       <module name="springSecurityStudy" target="1.8" />
+      <module name="theTest" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

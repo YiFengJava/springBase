@@ -12,4 +12,17 @@
     <artifactId>security-browser</artifactId>
     <description>security浏览器安全特定代码</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yd</groupId>
+            <artifactId>security-core</artifactId>
+            <version>${springSecurityStudy.version}</version>
+        </dependency>
+
+        <!--集群下的session管理-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session</artifactId>
+        </dependency>
+    </dependencies>
 </project>
