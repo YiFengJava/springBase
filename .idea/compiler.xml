@@ -9,6 +9,7 @@
         <module name="activitiDeveloperQuickStart" />
         <module name="exeCXFStringBoot" />
         <module name="exeSpringBoot" />
+        <module name="my_spring_cloud_study" />
         <module name="myFirstSpringBootProject" />
         <module name="securityapp" />
         <module name="securitybrowser" />
@@ -21,6 +22,7 @@
       <module name="demo" target="1.8" />
       <module name="exeCXFStringBoot" target="1.8" />
       <module name="exeSpringBoot" target="1.8" />
+      <module name="my_spring_cloud_study" target="1.8" />
       <module name="myFirstSpringBootProject" target="1.8" />
       <module name="mySpringBase" target="1.5" />
       <module name="securityapp" target="1.8" />

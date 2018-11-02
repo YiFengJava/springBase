@@ -1,0 +1,3 @@
+喻冬 ${application.version} ========== ${application.formatted-version}==========${spring-boot.version}==============
+${spring-boot.formatted-version}=============${Ansi.NAME}（或${AnsiColor.NAME}，${AnsiBackground.NAME}，${AnsiStyle.NAME}）
+=================${application.title}
