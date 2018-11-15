@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6751a672-29ee-4d80-9a36-18f3ed4e5f33" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/myFirstSpringBootProject/src/main/java/com/SpringAop/Male.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/myFirstSpringBootProject/src/main/java/com/SpringAop/Mian.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/myFirstSpringBootProject/src/main/java/com/SpringAop/Person.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/myFirstSpringBootProject/src/main/java/com/SpringAop/SleeperHelper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/myFirstSpringBootProject/src/main/java/com/SpringAop/SpringAopConfing.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -557,7 +552,7 @@
       <workItem from="1541120783493" duration="13925000" />
       <workItem from="1541142749467" duration="3204000" />
       <workItem from="1542182732596" duration="5013000" />
-      <workItem from="1542248074293" duration="38000" />
+      <workItem from="1542248074293" duration="87000" />
     </task>
     <task id="LOCAL-00001" summary="大概整理目录结构">
       <created>1541063846130</created>
@@ -601,11 +596,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541121301921</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="整理securitydemo模板启动demo项目">
+      <created>1542248127667</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542248127667</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33816000" />
+    <option name="totallyTimeSpent" value="33865000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2415,6 +2417,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
