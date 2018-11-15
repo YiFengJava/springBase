@@ -2,7 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/myFirstSpringBootProject" />
-    <file type="web" url="file://$PROJECT_DIR$/springSecurityStudy" />
+    <file type="web" url="file://$PROJECT_DIR$/springsecuritystudy" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/myFirstSpringBootProject/pom.xml" />
         <option value="$PROJECT_DIR$/springSecurityStudy/pom.xml" />
         <option value="$PROJECT_DIR$/my_spring_cloud_study/pom.xml" />
+        <option value="$PROJECT_DIR$/springsecuritystudy/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
