@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6751a672-29ee-4d80-9a36-18f3ed4e5f33" name="Default" comment="springsecurity项目重构">
+    <list default="true" id="6751a672-29ee-4d80-9a36-18f3ed4e5f33" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/springsecuritystudy/security-app/src/main/java/spring/study/securityApp/App.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -66,11 +67,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/springsecuritystudy/security-demo/src/main/java/spring/study/securitydemo/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
               <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/springsecuritystudy/security-app/src/main/java/spring/study/securityApp/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -268,6 +279,120 @@
               <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
               <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="study" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-browser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-browser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-browser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-browser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-browser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-browser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="study" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mySpringBase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mySpringBase" type="462c0819:PsiDirectoryNode" />
+              <item name="springsecuritystudy" type="462c0819:PsiDirectoryNode" />
+              <item name="security-browser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="study" type="462c0819:PsiDirectoryNode" />
+              <item name="securityBrowser" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -425,7 +550,7 @@
       <workItem from="1542248074293" duration="12875000" />
       <workItem from="1542352022901" duration="1360000" />
       <workItem from="1542367012848" duration="5421000" />
-      <workItem from="1542416009091" duration="6012000" />
+      <workItem from="1542416009091" duration="6223000" />
     </task>
     <task id="LOCAL-00001" summary="大概整理目录结构">
       <created>1541063846130</created>
@@ -504,11 +629,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542421917854</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="springsecurity项目重构">
+      <created>1542422106320</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1542422106320</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59446000" />
+    <option name="totallyTimeSpent" value="59657000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -540,7 +672,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12052506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7159904" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6551313" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -648,13 +780,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.0.9.RELEASE/spring-tx-5.0.9.RELEASE.jar!/org/springframework/transaction/annotation/Transactional.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/springsecuritystudy/security-demo/src/main/java/spring/study/securitydemo/service/TUserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1085,6 +1210,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/springsecuritystudy/security-app/src/main/java/spring/study/securityApp/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
           <folding />
         </state>
       </provider>
