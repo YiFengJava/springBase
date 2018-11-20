@@ -31,6 +31,11 @@ spring:
             indent-output: true
 
 mysecurity:
+    socialProperties:
+        qqProperties:
+            provider-id: qq
+            app-id: 1107982260
+            app-secret: Be0YqRSz2WhGPxgw
     browser:
 #        loginPage: /demo-signLogin.html
         loginType: JSON

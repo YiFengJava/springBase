@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
+import org.springframework.social.security.SpringSocialConfigurer;
 import spring.study.securitycore.authentication.FormLoginConfig;
 import spring.study.securitycore.authentication.ValidateFilterConfig;
 import spring.study.securitycore.authentication.handler.MyAuthenticationFailureHandler;
@@ -68,6 +69,9 @@ public class BrowserSecurityConfig
     @Autowired
     private ValidateFilterConfig validateFilterConfig;
 
+    @Autowired
+    public SpringSocialConfigurer springSocialConfigurer;
+
     //配置加密方式
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -86,6 +90,8 @@ public class BrowserSecurityConfig
                 .and()
                 .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
+                .apply(springSocialConfigurer)
+                .and()
                 .rememberMe()        //开启记住我功能
                 .tokenRepository(persistentTokenRepository())   //配置一个数据源来操作token  让用户与token对应并 储存在数据库
                 .tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())  //配置token的过期时间
@@ -94,6 +100,7 @@ public class BrowserSecurityConfig
                 .authorizeRequests()   //对请求的授权
                 .antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL
                         , securityProperties.getBrowser().getLoginPage(),
+                        "/auth/*",
                         SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*").permitAll() //该这些请求不需要身份验证
                 .anyRequest()  //对任何请求
                 .authenticated()  //都需要身份认证

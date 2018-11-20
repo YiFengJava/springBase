@@ -18,16 +18,16 @@
 
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>spring.study</groupId>-->
-            <!--<artifactId>security-browser</artifactId>-->
-            <!--<version>1.0.0</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>spring.study</groupId>
-            <artifactId>security-app</artifactId>
+            <artifactId>security-browser</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>spring.study</groupId>-->
+            <!--<artifactId>security-app</artifactId>-->
+            <!--<version>1.0.0</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 
