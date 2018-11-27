@@ -1,13 +1,13 @@
 
 server:
-    port: 8081
+    port: 80
 #    datasource:
 #      driver-class-name: com.mysql.jdbc.Driver
 #      url: jdbc:mysql://localhost:3306/springbootbase??useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
 #      username: root
 #      password: 1234
 #
-
+    session: 60
 spring:
     datasource:
         url: jdbc:mysql://localhost:3306/testspringproject?useUnicode=true&characterEncoding=UTF-8&useSSL=false
@@ -34,8 +34,8 @@ mysecurity:
     socialProperties:
         qqProperties:
             provider-id: qq
-            app-id: 1107982260
-            app-secret: Be0YqRSz2WhGPxgw
+            app-id: 101521863
+            app-secret: a4098bc6065314509978c77952d5a15e
     browser:
 #        loginPage: /demo-signLogin.html
         loginType: JSON

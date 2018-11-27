@@ -1,6 +1,8 @@
 package spring.study.securitycore.social.qq.connection;
 import lombok.Data;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
+import org.springframework.social.security.SocialAuthenticationProvider;
+import org.springframework.social.security.provider.OAuth2AuthenticationService;
 import spring.study.securitycore.social.qq.api.QQ;
 import spring.study.securitycore.social.qq.api.QQImpl;
 @Data

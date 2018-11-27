@@ -1,22 +1,36 @@
 package spring.study.securitydemo.entity;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.security.SocialUserDetails;
 
+import javax.persistence.*;
 import java.util.*;
 
+@Entity
+@Table(name="tb_user")
 public class User  implements UserDetails ,SocialUserDetails {
+    @Id
     private  String userId ="10";
-    private String username="yudong";
-    private  String password="123456";
-    private Set<GrantedAuthority> authorities=new HashSet<>();
 
+    @Column
+    private String username="yudong";
+
+    @Column
+    private  String password="123456";
+
+    @Transient
+    private Set<Permissions> authorities=new HashSet<>();
+
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name = "tb_role_user",joinColumns = { @JoinColumn(referencedColumnName = "userId",name="uid") }, inverseJoinColumns = {
+            @JoinColumn(referencedColumnName = "id",name="rid") })
+    private Set<Role> roleSet=new HashSet<>();
 
     @Override
     public String getUserId() {
         return this.userId;
     }
-
 
     public void setUserId(String userId) {
         this.userId = userId;
@@ -31,20 +45,12 @@ public class User  implements UserDetails ,SocialUserDetails {
     }
 
 
-
-
-    public void setAuthorities(Set<GrantedAuthority> authorities) {
+    public void setAuthorities(Set<Permissions> authorities) {
         this.authorities = authorities;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        this.authorities.add(new GrantedAuthority(){
-            @Override
-            public String getAuthority() {
-                return "admin";
-            }
-        });
         return this.authorities;
     }
 
@@ -52,6 +58,14 @@ public class User  implements UserDetails ,SocialUserDetails {
     public String getPassword() {
 
         return this.password;
+    }
+
+    public Set<Role> getRoleSet() {
+        return roleSet;
+    }
+
+    public void setRoleSet(Set<Role> roleSet) {
+        this.roleSet = roleSet;
     }
 
     @Override

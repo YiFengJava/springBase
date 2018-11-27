@@ -13,17 +13,17 @@ public class TUserServiceImpl implements TUserService{
     @Autowired
     private UserDao userDao;
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public TUser insertTUser(Long id) throws Exception {
-        TUser user=new TUser();
-        user.setId(id);
-        user.setName("yudong");
-        user.setAge(12);
-        TUser save = userDao.save(user);
-        delelt(id);
-        return save;
-    }
+//    @Override
+//    @Transactional(rollbackFor = Exception.class)
+//    public TUser insertTUser(Long id) throws Exception {
+//        TUser user=new TUser();
+//        user.setId(id);
+//        user.setName("yudong");
+//        user.setAge(12);
+//        TUser save = userDao.save(user);
+//        delelt(id);
+//        return save;
+//    }
 //,propagation= Propagation.SUPPORTS
     @Transactional(rollbackFor = Exception.class,propagation= Propagation.REQUIRES_NEW)
     public void delelt(Long id) throws Exception {
@@ -31,5 +31,10 @@ public class TUserServiceImpl implements TUserService{
             throw  new Exception();
         }
         userDao.deleteById(id);
+    }
+
+    @Override
+    public TUser insertTUser(Long id) throws Exception {
+        return null;
     }
 }

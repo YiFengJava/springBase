@@ -37,13 +37,13 @@ public class MyUserDetailsService implements UserDetailsService ,SocialUserDetai
         logger.info("表单登陆的用户是：" + username);
         //根据用户名查找用户详细信息
         User userDetailsInfoByName = userService.getUserDetailsInfoByName(username);
-        String password = userDetailsInfoByName.getPassword();
-        userDetailsInfoByName.setPassword(passwordEncoder.encode(password));
-//        User user = new User(username,
+//        String password = userDetailsInfoByName.getPassword();
+//        userDetailsInfoByName.setPassword(passwordEncoder.encode(password));
+//        VUser user = new VUser(username,
 //                passwordEncoder.encode(userTb.getPassword()),
 //                AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
-////        org.springframework.security.core.userdetails.User admin =
-////                new org.springframework.security.core.userdetails.User(username
+////        org.springframework.security.core.userdetails.VUser admin =
+////                new org.springframework.security.core.userdetails.VUser(username
 ////                        , encodedPassword
 ////                        , AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
 

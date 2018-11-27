@@ -9,18 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import spring.study.securitydemo.dto.User;
+import org.springframework.web.context.request.ServletWebRequest;
+import spring.study.securitydemo.dto.VUser;
 import spring.study.securitydemo.dto.UserQueryCondition;
 import spring.study.securitydemo.entity.TUser;
+import spring.study.securitydemo.entity.User;
 import spring.study.securitydemo.exception.UserNotExistException;
 import spring.study.securitydemo.service.TUserService;
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +34,27 @@ public class UserController {
     @Autowired
     private TUserService tUserService;
 
+    @Autowired
+    private ProviderSignInUtils providerSignInUtils;
+
+
 //    @RequestMapping(value = "/user",method = RequestMethod.GET)
-//    public List<User> query(@RequestParam(value = "name",required = true) String name){ //请求中请求参数name 别名，是否必填
-//        List<User> list=new ArrayList<>();
-//        list.add(new User());
-//        list.add(new User());
-//        list.add(new User());
+//    public List<VUser> query(@RequestParam(value = "name",required = true) String name){ //请求中请求参数name 别名，是否必填
+//        List<VUser> list=new ArrayList<>();
+//        list.add(new VUser());
+//        list.add(new VUser());
+//        list.add(new VUser());
 //        return  list;
+//    }
+
+
+
+//    @ApiOperation("注册，绑定")
+//    @PostMapping(value = "/regists")
+//    public void userRegists(User user, HttpServletRequest request){
+//        //不管是注册还是绑定都会有一个用户唯一标识
+//        String userId = user.getUserId();
+//        providerSignInUtils.doPostSignUp(userId,new ServletWebRequest(request));
 //    }
 
     @GetMapping(value = "/me")
@@ -53,12 +69,12 @@ public class UserController {
     }
 
     @PostMapping()
-    public User create(@Valid @RequestBody  User user){
-        System.out.println(user.getPassword());
-        System.out.println(user.getUsername());
-        System.out.println(user.getBrithday());
-        user.setId("1");
-        return  user;
+    public VUser create(@Valid @RequestBody VUser VUser){
+        System.out.println(VUser.getPassword());
+        System.out.println(VUser.getUsername());
+        System.out.println(VUser.getBrithday());
+        VUser.setId("1");
+        return VUser;
     }
 
 
@@ -72,7 +88,7 @@ public class UserController {
 
 
 //    @PostMapping()
-//    public User create(@Valid @RequestBody  User user, BindingResult erros){
+//    public VUser create(@Valid @RequestBody  VUser user, BindingResult erros){
 //        if(erros.hasErrors()){
 //            erros.getAllErrors().stream().forEach(erro->
 //                    System.out.println(erro.getDefaultMessage()));
@@ -85,7 +101,7 @@ public class UserController {
 //    }
 
     @PutMapping(value = "/{id:\\d+}")
-    public User update(@Valid @RequestBody  User user, BindingResult erros){
+    public VUser update(@Valid @RequestBody VUser VUser, BindingResult erros){
         if(erros.hasErrors()){
             erros.getAllErrors().stream().forEach(erro->{
                         FieldError erro1 = (FieldError) erro;
@@ -95,34 +111,34 @@ public class UserController {
                     }
                    );
         }
-        System.out.println(user.getPassword());
-        System.out.println(user.getUsername());
-        System.out.println(user.getBrithday());
-        user.setId("1");
-        return  user;
+        System.out.println(VUser.getPassword());
+        System.out.println(VUser.getUsername());
+        System.out.println(VUser.getBrithday());
+        VUser.setId("1");
+        return VUser;
     }
 
-    @JsonView({User.UserSimpleView.class})
+    @JsonView({VUser.UserSimpleView.class})
     //@RequestMapping(value = "/user",method = RequestMethod.GET)
     @GetMapping()  //(value = "/user")
     @ApiOperation(value = "用户查询服务")
-    public List<User> query(UserQueryCondition  condition,@PageableDefault(page = 2,size = 17,sort = "username,asc") Pageable pageable){
+    public List<VUser> query(UserQueryCondition  condition, @PageableDefault(page = 2,size = 17,sort = "username,asc") Pageable pageable){
         //反射工具
         System.out.println(ReflectionToStringBuilder.toString(condition, ToStringStyle.MULTI_LINE_STYLE));
-        List<User> list=new ArrayList<>();
-        list.add(new User());
-        list.add(new User());
-        list.add(new User());
+        List<VUser> list=new ArrayList<>();
+        list.add(new VUser());
+        list.add(new VUser());
+        list.add(new VUser());
         return  list;
     }
 
-    @JsonView(User.UserDetaiView.class)
+    @JsonView(VUser.UserDetaiView.class)
 //    @RequestMapping(value = "/user/{id:\\d+}",method = RequestMethod.GET)
     @GetMapping("/{id:\\d+}")
-    public User getInfo(@ApiParam(value = "用户主键") @PathVariable String id){
-        User user = new User();
-        user.setUsername("tom");
-        return  user;
+    public VUser getInfo(@ApiParam(value = "用户主键") @PathVariable String id){
+        VUser VUser = new VUser();
+        VUser.setUsername("tom");
+        return VUser;
     }
 
     @GetMapping(value = "/test/{id}")
@@ -131,11 +147,11 @@ public class UserController {
     }
 
     @GetMapping(value = "/tests/{id}")
-    public User testException1(@PathVariable String id){
+    public VUser testException1(@PathVariable String id){
       System.out.println("進入测试");
-      User user=  new User();
-      user.setId("1");
-      return  user;
+      VUser VUser =  new VUser();
+      VUser.setId("1");
+      return VUser;
     }
 
 //    使用@JsonView使用步骤

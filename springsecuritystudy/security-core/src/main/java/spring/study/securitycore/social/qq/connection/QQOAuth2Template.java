@@ -13,7 +13,11 @@ import java.nio.charset.Charset;
 
 public class QQOAuth2Template extends OAuth2Template {
 
-    public Logger logger= LoggerFactory.getLogger(QQOAuth2Template.class);    public QQOAuth2Template(String clientId, String clientSecret, String authorizeUrl, String accessTokenUrl) {
+    public Logger logger= LoggerFactory.getLogger(QQOAuth2Template.class);
+
+
+
+    public QQOAuth2Template(String clientId, String clientSecret, String authorizeUrl, String accessTokenUrl) {
         super(clientId, clientSecret, authorizeUrl, accessTokenUrl);
         setUseParametersForClientAuthentication(true);
     }

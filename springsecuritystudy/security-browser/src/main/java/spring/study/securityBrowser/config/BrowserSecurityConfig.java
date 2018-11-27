@@ -4,23 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-
+import spring.study.securityBrowser.session.SessionStrategy;
 import org.springframework.social.security.SpringSocialConfigurer;
 import spring.study.securitycore.authentication.FormLoginConfig;
 import spring.study.securitycore.authentication.ValidateFilterConfig;
-import spring.study.securitycore.authentication.handler.MyAuthenticationFailureHandler;
-import spring.study.securitycore.authentication.handler.MyAuthenticationSuccessHandler;
 import spring.study.securitycore.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
-import spring.study.securitycore.filter.ValidateCodeFilter;
-import spring.study.securitycore.filter.ValidateFilter;
-import spring.study.securitycore.filter.ValidateSmsCodeFilter;
 import spring.study.securitycore.properties.SecurityConstants;
 import spring.study.securitycore.properties.SecurityProperties;
 import spring.study.securitycore.validate.ValidateCodeProcessorHolder;
@@ -72,6 +65,9 @@ public class BrowserSecurityConfig
     @Autowired
     public SpringSocialConfigurer springSocialConfigurer;
 
+    @Autowired
+    private SessionStrategy sessionStrategy;
+
     //配置加密方式
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -97,10 +93,20 @@ public class BrowserSecurityConfig
                 .tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())  //配置token的过期时间
                 .userDetailsService(userDetailsService) //配置一个用户查询服务 ，使之根据token查到用户名 ，然后根据用户名查到用户信息
                 .and()            //开始配置授权信息
+                .sessionManagement()   //session管理
+                .invalidSessionUrl("/session/invalid") //session失效的回跳地址
+                .maximumSessions(1)  //最大链接数
+                .expiredSessionStrategy(sessionStrategy) //session失效，过期处理
+                .maxSessionsPreventsLogin(true)
+                .and()
+                .and()
                 .authorizeRequests()   //对请求的授权
-                .antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL
-                        , securityProperties.getBrowser().getLoginPage(),
-                        "/auth/*",
+                .antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
+                        securityProperties.getBrowser().getLoginPage(),
+                        securityProperties.getSocialProperties().getFilterProcessesUrl()+"/*",
+                        securityProperties.getBrowser().getSignUpUrl(),
+                        "/login/regists",
+                        "/session/invalid",
                         SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*").permitAll() //该这些请求不需要身份验证
                 .anyRequest()  //对任何请求
                 .authenticated()  //都需要身份认证

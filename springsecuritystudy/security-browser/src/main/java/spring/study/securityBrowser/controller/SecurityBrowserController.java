@@ -9,11 +9,16 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.ServletWebRequest;
 import spring.study.securityBrowser.support.SimpleResponse;
+import spring.study.securityBrowser.support.SocialUserInfo;
 import spring.study.securitycore.properties.SecurityConstants;
 import spring.study.securitycore.properties.SecurityProperties;
 
@@ -36,6 +41,9 @@ public class SecurityBrowserController {
     @Autowired
     private SecurityProperties securityProperties;
 
+    @Autowired
+    private ProviderSignInUtils providerSignInUtils;
+
     /**
      * 当需要认证时跳转到这里
      * @param request
@@ -57,5 +65,24 @@ public class SecurityBrowserController {
             }
         }
         return new SimpleResponse("访问的五福需要身份认证，请引导用户到登陆页面！");
+    }
+
+
+    @GetMapping(value = "/social/user")
+    public SocialUserInfo getSocialUserInfo(HttpServletRequest request){
+        Connection<?> connection = providerSignInUtils.getConnectionFromSession(new ServletWebRequest(request));
+        SocialUserInfo info = new SocialUserInfo();
+        info.setProviderId(connection.getKey().getProviderId());
+        info.setProviderUserId(connection.getKey().getProviderUserId());
+        info.setNickname(connection.getDisplayName());
+        info.setHaeding(connection.getImageUrl());
+        return info;
+    }
+
+    @GetMapping(value = "/session/invalid")
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public SimpleResponse  sessionInvalid(){
+        String msg="session 失效";
+        return  new SimpleResponse(msg);
     }
 }

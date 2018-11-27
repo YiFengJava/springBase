@@ -47,6 +47,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
         QQUserInfo qqUserInfo = null;
         try {
             qqUserInfo = objectMapper.readValue(result, QQUserInfo.class);
+            qqUserInfo.setOpenId(openid);
         } catch (IOException e) {
             e.printStackTrace();
         }

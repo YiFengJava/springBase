@@ -12,6 +12,7 @@ import org.springframework.social.config.annotation.EnableSocial;
 import org.springframework.social.config.annotation.SocialConfigurer;
 import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import  org.springframework.security.crypto.encrypt.Encryptors;
@@ -42,6 +43,9 @@ public class SocialConfig
     private DataSource dataSource;
 
 
+    @Autowired(required = false)
+    private  ConnectionSignUp  connectionSignUp;
+
     @Override
     public UserIdSource getUserIdSource() {
 //        return new UserIdSource() {
@@ -70,6 +74,10 @@ public class SocialConfig
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
         JdbcUsersConnectionRepository jdbcUsersConnectionRepository =
                 new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
+
+        if(connectionSignUp!=null){
+            jdbcUsersConnectionRepository.setConnectionSignUp(connectionSignUp);
+        }
         return jdbcUsersConnectionRepository;
     }
 
@@ -78,10 +86,10 @@ public class SocialConfig
      * @param
      * @return
      */
-//    @Bean
-//    public ProviderSignInUtils providerSignInUtils(ConnectionFactoryLocator factoryLocator) {
-//        return new ProviderSignInUtils(factoryLocator, getUsersConnectionRepository(factoryLocator));
-//    }
+    @Bean
+    public ProviderSignInUtils providerSignInUtils(ConnectionFactoryLocator factoryLocator) {
+        return new ProviderSignInUtils(factoryLocator, getUsersConnectionRepository(factoryLocator));
+    }
 
     @Bean
     public SpringSocialConfigurer springSocialConfigurer(){
@@ -92,22 +100,8 @@ public class SocialConfig
         String signUpUrl = securityProperties.getBrowser().getSignUpUrl();
         MySocialConfig configurer = new MySocialConfig(filterProcessesUrl,signUpUrl);
 //        //自动去配置实现url
-//
-//        configurer.signupUrl(securityProperties.getBrowser().getSignUpUrl());
         return configurer;
-//        return  new SpringSocialConfigurer();
+
     }
 
-//    /**
-//     * 社交登录配置类,供浏览器或app模块引入设计登录配置用
-//     */
-//    @Bean
-//    public SpringSocialConfigurer tihomSocialSecurityConfig(){
-//        TihomSpringSocialConfigurer configurer = new TihomSpringSocialConfigurer
-//                (securityProperties.getSocial().getFilterProcessesUrl());
-//        configurer.signupUrl(securityProperties.getBrowser().getSignUpUrl());
-//        //配置后处理器
-//        configurer.setSocialAuthenticationFilterPostProcessor(socialAuthenticationFilterPostProcessor);
-//        return configurer;
-//    }
 }
