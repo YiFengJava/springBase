@@ -14,15 +14,15 @@ import java.util.List;
 public class Company {
     @Id
     private String id;
-    @Column
+    @Column(name = "name",nullable=false)
     private String name;
-    @Column
+    @Column(name = "code",nullable=false)
     private String code;
     @Column
     private String descs;
     @Column
     private String manager;
-    @Column
+    @Column(name = "pcode",nullable=false)
     private String pcode;
     @Column
     private String tell;

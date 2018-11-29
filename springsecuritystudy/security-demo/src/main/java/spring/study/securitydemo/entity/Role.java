@@ -8,13 +8,23 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name="tb_role")
+@Table(name="tb_role",indexes = {@Index(name = "role_index_id_and_value",  columnList="id,value", unique = true),
+        }
+//        ,uniqueConstraints = {
+//        @UniqueConstraint(name = “索引名称”, columnNames = {“字段1”,“字段2”})
+//}
+    )
 public class Role {
     @Id
     private String id;
-    @Column
+
+    @Column(name = "name",nullable=false)
     private String name;
-    @Column
+
+    @Column(name = "value",nullable=false)
+    private String value;
+
+    @Column(name = "descs")
     private String descs;
     @ManyToMany()
     @JoinTable(name = "tb_role_community",joinColumns = { @JoinColumn(name = "rid",referencedColumnName = "id") }, inverseJoinColumns = {

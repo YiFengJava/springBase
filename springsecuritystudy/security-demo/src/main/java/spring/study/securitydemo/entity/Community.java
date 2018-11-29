@@ -12,7 +12,7 @@ public class Community {
     @Id
     private String id;
 
-    @Column
+    @Column(nullable = false,name = "name")
     private String name;
 
     @Column

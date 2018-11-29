@@ -12,14 +12,23 @@ import java.util.Set;
 public class Permissions implements GrantedAuthority {
     @Id
     private String id;
-    @Column
+    @Column(name ="name",nullable = false)
     private String name;
-    @Column
+
+    @Column(name ="value",nullable = false)
+    private String value;
+
+    @Column(name ="type",nullable = false)
     private String type;
-    @Column
+
+    @Column(name ="code",nullable = false)
     private String code;
-    @Column
+
+    @Column(name ="pcode",nullable = false)
     private String pcode;
+
+    @Column(name = "descs")
+    private String descs;
 
     @ManyToMany()
     @JoinTable(name = "tb_role_permissions",joinColumns = { @JoinColumn(referencedColumnName = "id",name="pid") }, inverseJoinColumns = {

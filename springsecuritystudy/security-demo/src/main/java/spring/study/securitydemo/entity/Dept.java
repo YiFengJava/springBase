@@ -11,11 +11,11 @@ import java.util.Set;
 public class Dept {
     @Id
     private String id;
-    @Column
+    @Column(name = "name",nullable=false)
     private String name;
-    @Column
+    @Column(name = "code",nullable=false)
     private String code;
-    @Column
+    @Column(name = "pcode",nullable=false)
     private String pcode;
     @Column
     private String descs;

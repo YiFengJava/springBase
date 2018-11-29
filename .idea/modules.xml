@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/activitiDeveloperQuickStart/activitiDeveloperQuickStart.iml" filepath="$PROJECT_DIR$/activitiDeveloperQuickStart/activitiDeveloperQuickStart.iml" />
       <module fileurl="file://$PROJECT_DIR$/exeCXFStringBoot/exeCXFStringBoot.iml" filepath="$PROJECT_DIR$/exeCXFStringBoot/exeCXFStringBoot.iml" />
       <module fileurl="file://$PROJECT_DIR$/exeSpringBoot/exeSpringBoot.iml" filepath="$PROJECT_DIR$/exeSpringBoot/exeSpringBoot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manage-admin/manage-admin.iml" filepath="$PROJECT_DIR$/manage-admin/manage-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/myFirstSpringBootProject/myFirstSpringBootProject.iml" filepath="$PROJECT_DIR$/myFirstSpringBootProject/myFirstSpringBootProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/mySpringBase.iml" filepath="$PROJECT_DIR$/mySpringBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/my_spring_cloud_study/my_spring_cloud_study.iml" filepath="$PROJECT_DIR$/my_spring_cloud_study/my_spring_cloud_study.iml" />
