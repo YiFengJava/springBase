@@ -4,12 +4,14 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
 @Entity
 @Table(name="tb_permissions")
-public class Permissions implements GrantedAuthority {
+public class Permissions implements GrantedAuthority ,Serializable {
     @Id
     private String id;
     @Column(name ="name",nullable = false)
@@ -38,5 +40,24 @@ public class Permissions implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return "admin";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Permissions that = (Permissions) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(value, that.value) &&
+                Objects.equals(type, that.type) &&
+                Objects.equals(code, that.code) &&
+                Objects.equals(pcode, that.pcode) &&
+                Objects.equals(descs, that.descs) ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, value, type, code, pcode, descs);
     }
 }

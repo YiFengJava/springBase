@@ -4,6 +4,7 @@ package xyz.yudong520.manageadmin.system.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
@@ -14,7 +15,7 @@ import java.util.Set;
 //        @UniqueConstraint(name = “索引名称”, columnNames = {“字段1”,“字段2”})
 //}
     )
-public class Role {
+public class Role implements Serializable {
     @Id
     private String id;
 

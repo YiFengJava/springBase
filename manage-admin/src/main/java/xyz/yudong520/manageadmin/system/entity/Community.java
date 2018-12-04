@@ -3,12 +3,13 @@ package xyz.yudong520.manageadmin.system.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
 @Entity
 @Table(name="tb_community")
-public class Community {
+public class Community implements Serializable {
     @Id
     private String id;
 
