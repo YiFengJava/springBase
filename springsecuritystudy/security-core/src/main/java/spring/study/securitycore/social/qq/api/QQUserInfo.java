@@ -14,6 +14,8 @@ public class QQUserInfo {
 
     private String   msg;
 
+    private String    is_lost;
+
     private String     nickname;
 
     private String    figureurl;
@@ -35,6 +37,11 @@ public class QQUserInfo {
     private String    yellow_vip_level;
 
     private String    level;
-
+    private String    province;
     private String     is_yellow_year_vip;
+
+    private String year;
+    private String     city;
+    private String      constellation;
+
 }

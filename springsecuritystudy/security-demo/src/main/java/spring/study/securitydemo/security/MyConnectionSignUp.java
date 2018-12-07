@@ -21,6 +21,7 @@ public class MyConnectionSignUp implements ConnectionSignUp {
         User user=new User();
         user.setUserId(userId);
         user.setUsername(connection.getDisplayName());
+        user.setNickName(connection.getDisplayName());
         user.setPassword("123456");
         User save = userDao.save(user);
         return save.getUserId();

@@ -13,5 +13,5 @@ public interface UserDao extends JpaRepository<User, Long> {
     User getUserByUsername(@Param(value = "username") String username);
 
     @Query("select u from User u where u.userId = :userId") //不加nativeQuery应使用HQL
-    User getUserByUserId(String userId);
+    User getUserByUserId(@Param(value = "userId") String userId);
 }
