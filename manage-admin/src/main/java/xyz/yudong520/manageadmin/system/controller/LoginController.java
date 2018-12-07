@@ -30,12 +30,25 @@ public class LoginController {
     private RedirectStrategy redirectStrategy =new DefaultRedirectStrategy();
 
 
+    //跳转登陆页面
     @RequestMapping(value = "/page")
     public String loginPage(){
         return  "login.html";
     }
 
+    //跳转登陆成功页面
+    @RequestMapping(value = "/success")
+    public String loginSuccessPage(){
+        return  "home.html";
+    }
 
+    //跳转退出登陆页面
+    @RequestMapping(value = "/logout")
+    public String logoutPage(){
+        return  "logout.html";
+    }
+
+    //自定义登陆认证的接口
     @RequestMapping(value = "/auth")
     @ResponseBody
     @ResponseStatus(value =HttpStatus.UNAUTHORIZED )
@@ -57,6 +70,8 @@ public class LoginController {
         }
         return  new SimpleResponse(HttpStatus.UNAUTHORIZED.value(),"请先认证",null);
     }
+
+
 
 
 

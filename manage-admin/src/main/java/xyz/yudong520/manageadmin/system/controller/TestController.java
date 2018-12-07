@@ -7,4 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
+    @GetMapping(value = "/aa")
+    public String aa(){
+        return  "aa.html";
+    }
+
+
 }

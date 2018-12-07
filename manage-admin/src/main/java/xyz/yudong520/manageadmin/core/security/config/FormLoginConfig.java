@@ -12,14 +12,14 @@ import xyz.yudong520.manageadmin.core.security.handler.MyAuthenticationSuccessHa
  * 表单登陆的securuty的配置
  */
 public class FormLoginConfig
-//        extends WebSecurityConfigurerAdapter
+        extends WebSecurityConfigurerAdapter
 {
 
-//    @Autowired
-//    private MyAuthenticationFailureHandler myAuthenticationFailureHandler;
+    @Autowired
+    private MyAuthenticationFailureHandler myAuthenticationFailureHandler;
 //
-//    @Autowired
-//    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
+    @Autowired
+    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
     /**
      * 加入用户名密码登陆的配置
      * @param http
@@ -29,7 +29,14 @@ public class FormLoginConfig
         http
                 .formLogin()  //表单登陆 登陆认证 在UsernamePasswordAuthenticationFilter之前
                 .loginPage("/login/page")  //自定义的登陆页面
-                .loginProcessingUrl("/login/auth");   //自定的需要认证的接口
-
+                .loginProcessingUrl("/login/auth")  //自定的需要认证的接口
+                .successForwardUrl("/login/success")
+                .successHandler(myAuthenticationSuccessHandler)
+                .failureHandler(myAuthenticationFailureHandler)
+//                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login/logout");
+//                .permitAll();
     }
 }

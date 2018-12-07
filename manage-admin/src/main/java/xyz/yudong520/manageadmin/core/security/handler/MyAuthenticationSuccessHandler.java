@@ -48,15 +48,15 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
             logger.info("登陆成功！--");
             //执行该方法表示登陆成功 判断是否为Json
-            if(LoginType.JSON.equals(securityProperties.getBrowser().getLoginType())){
-                //设置返回类型
-                httpServletResponse.setContentType("application/json;charset=UTF-8");
-                //返回认证信息
-                httpServletResponse.getWriter().write(objectMapper.writeValueAsString(authentication));
-            }else{
-                //执行父类方法
-                super.onAuthenticationSuccess(httpServletRequest,httpServletResponse,authentication);
-            }
+//            if(LoginType.JSON.equals(securityProperties.getBrowser().getLoginType())){
+//                //设置返回类型
+//                httpServletResponse.setContentType("application/json;charset=UTF-8");
+//                //返回认证信息
+//                httpServletResponse.getWriter().write(objectMapper.writeValueAsString(authentication));
+//            }else{
+//                //执行父类方法
+//                super.onAuthenticationSuccess(httpServletRequest,httpServletResponse,authentication);
+//            }
 
     }
 }

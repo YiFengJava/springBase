@@ -14,7 +14,7 @@ import xyz.yudong520.manageadmin.system.service.UserService;
  * UserDetailsService  查询用户详情的接口
  * SocialUserDetailsService  查询socialuser的详情接口
  */
-//@Component
+@Component
 public class SecurityService implements UserDetailsService,SocialUserDetailsService {
 
     @Autowired
