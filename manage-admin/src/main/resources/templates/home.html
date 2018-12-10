@@ -2,15 +2,126 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <title>Smart - 主页</title>
+    <base href="/">
+    <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
+    <link th:href="@{/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/font-awesome.min.css?v=4.4.0}" rel="stylesheet"  type="text/css" />
+    <link th:href="@{/css/animate.css}"  rel="stylesheet"  type="text/css" />
+    <link th:href="@{/css/style.css?v=4.1.0}"  rel="stylesheet"  type="text/css" />
+    <!--<link href="${ctxPath}/static/css/fonts-awesome.min.css?v=4.4.0" rel="stylesheet">-->
+    <!--<link href="${ctxPath}/static/css/animate.css" rel="stylesheet">-->
+    <!--<link href="${ctxPath}/static/css/style.css?v=4.1.0" rel="stylesheet">-->
+    <!--<script type="text/javascript" src="/js/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1.min.js}"></script>-->
 </head>
-<body>
-成功
-<input value="4545" id="ad"/>
-<script>
-    console.log("sss");
-    alert($("#ad").val())
-</script>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i>
+        </div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element" style="padding: 8px 30px 10px 38px;">
+
+                        <span class="block m-b-xs">
+                    	    <img alt="image" class="img-circle" src="/images/x.png" width="64px" height="64px"/>
+                               <!--/@if(isEmpty(avatar)){-->
+                                    <!--src="${ctxPath}/static/img/alipic.jpg"-->
+                               <!--/@}else{-->
+                                    <!--src="${ctxPath}/kaptcha/${avatar}"-->
+                               <!--/@} -->
+                        </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span>
+                       		<span class="m-t-xs"><strong class="font-bold">大东</strong></span>
+                        	<span class="text-muted text-xs">后台管理员<b class="caret"></b></span>
+                        </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a class="J_menuItem" href="/mgr/user_info">个人资料</a></li>
+                            <li><a class="J_menuItem" href="/mgr/user_chpwd">修改密码</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/logout">安全退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">Smart
+                    </div>
+                </li>
+
+                <!--/@for(title in titles){-->
+                <!--/@if(tool.isEmpty(title.children)){-->
+                <!--<li>-->
+                    <!--<a class="J_menuItem" href="/a/a" name="tabMenuItem">-->
+                        <!--<i class="fa fa-home"></i>-->
+                        <!--<span class="nav-label">系统管理</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--/@}else{-->
+                <li>
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">系统管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <!--/@for(subTitle in title.children){-->
+                        <!--/@if(tool.isEmpty(subTitle.children)){-->
+                        <!--<li>-->
+                            <!--<a class="J_menuItem" href="/a" name="tabMenuItem">用户管理</a>-->
+                        <!--</li>-->
+                        <!--/@}else{-->
+                        <li>
+                            <a href="#">用户管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <!--/@for(thirdTitle in subTitle.children){-->
+                                <li>
+                                    <a class="J_menuItem" href="${ctxPath}${thirdTitle.url}" name="tabMenuItem">用户添加</a>
+                                </li>
+                                <!--/@}-->
+                            </ul>
+                        </li>
+                        <!--/@}-->
+                        <!--/@}-->
+                    </ul>
+                </li>
+                <!--/@}-->
+                <!--/@}-->
+
+            </ul>
+        </div>
+    </nav>
+
+<!--<div th:object="${authentication.principal}">-->
+    <!--<span th:text="*{username}">...</span>-->
+<!--</div>-->
+    <!--左侧导航结束-->
+
+    <!--右侧部分开始-->
+    <!--/@include("common/_right.html"){}-->
+    <!--右侧部分结束-->
+
+    <!--右侧边栏开始-->
+    <!--/@include("common/_theme.html"){}-->
+    <!--右侧边栏结束-->
+</div>
+
+<!-- 全局js -->
+<script type="text/javascript" th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+<script type="text/javascript"  th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+<script type="text/javascript"  th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/plugins/pace/pace.min.js}"></script>
+
+<script type="text/javascript"  th:src="@{/js/hplus.js}"></script>
+
+
+
 </body>
+
 </html>

@@ -47,7 +47,7 @@ public class User  implements UserDetails ,SocialUserDetails,Serializable {
     private Date birthday;    //出生日期
 
     @Column(name = "dateStatus",length = 1)
-    private Integer dateStatus=0;   //数据状态
+    private Integer dateStatus=1;   //数据状态
 
     @Temporal(TemporalType.DATE)
     @Column(name ="created_time" )

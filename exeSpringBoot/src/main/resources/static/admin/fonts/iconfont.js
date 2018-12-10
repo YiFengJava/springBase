@@ -240,7 +240,7 @@
   if (shouldInjectCss && !window.__iconfont__svg__cssinject__) {
     window.__iconfont__svg__cssinject__ = true
     try {
-      document.write("<style>.svgfont {display: inline-block;width: 1em;height: 1em;fill: currentColor;vertical-align: -0.1em;font-size:16px;}</style>");
+      document.write("<style>.svgfont {display: inline-block;width: 1em;height: 1em;fill: currentColor;vertical-align: -0.1em;fonts-size:16px;}</style>");
     } catch (e) {
       console && console.log(e)
     }

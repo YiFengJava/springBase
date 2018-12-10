@@ -30,9 +30,11 @@ public class FormLoginConfig
                 .formLogin()  //表单登陆 登陆认证 在UsernamePasswordAuthenticationFilter之前
                 .loginPage("/login/page")  //自定义的登陆页面
                 .loginProcessingUrl("/login/auth")  //自定的需要认证的接口
-                .successForwardUrl("/login/success")
+//                .successForwardUrl("/login/success")
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenticationFailureHandler)
+//                .defaultSuccessUrl("/login/success")
+//                .successForwardUrl("/login/success")
 //                .permitAll()
                 .and()
                 .logout()

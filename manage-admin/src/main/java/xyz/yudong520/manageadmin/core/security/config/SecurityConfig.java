@@ -23,8 +23,8 @@ public class SecurityConfig extends FormLoginConfig {
         applyPasswordAuthenticationConfig(http);
         http
                 .authorizeRequests() //请求授权
-                .antMatchers( "/login/auth","/login/page","/login/success","/login/logout",
-                        "/css/**","/font/**","/images/**","/js/**","/json/**","/skin/**")
+                .antMatchers( "/login/auth","/login/page","/login/logout",
+                        "/css/**","/fonts/**","/images/**","/js/**","/json/**","/skin/**","/*.ico")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -40,10 +40,11 @@ public class SecurityConfig extends FormLoginConfig {
                 .csrf().disable();//暂时关闭跨站请求伪造
     }
 
+
 //    @Override
 //    public void configure(WebSecurity web) throws Exception {
 //        //解决静态资源被拦截的问题
-//        web.ignoring().antMatchers("/static/**","/css/**","/font/**","/images/**","/js/**","/json/**","/skin/**");
+//        web.ignoring().antMatchers("/resources/**","/static/**","/css/**","/fonts/**","/images/**","/js/**","/json/**","/skin/**");
 //    }
 
 
@@ -52,12 +53,5 @@ public class SecurityConfig extends FormLoginConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    public static void main(String[] args) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String encode = bCryptPasswordEncoder.encode("123456");
-        System.out.print(encode);
-    }
-
 
 }

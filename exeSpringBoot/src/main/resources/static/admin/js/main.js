@@ -80,7 +80,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'dialog'], function() {
 //		  ,btn: ['火速围观', '残忍拒绝']
 //		  ,btnAlign: 'c'
 //		  ,moveType: 1 //拖拽模式，0或者1
-//		  ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">后台模版1.1版本今日更新：<br><br><br>数据列表页...<br><br>编辑删除弹出功能<br><br>失去焦点排序功能<br>数据列表页<br>数据列表页<br>数据列表页</div>'
+//		  ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; fonts-weight: 300;">后台模版1.1版本今日更新：<br><br><br>数据列表页...<br><br>编辑删除弹出功能<br><br>失去焦点排序功能<br>数据列表页<br>数据列表页<br>数据列表页</div>'
 //		  ,success: function(layero){
 //		    var btn = layero.find('.layui-layer-btn');
 //		    btn.find('.layui-layer-btn0').attr({
