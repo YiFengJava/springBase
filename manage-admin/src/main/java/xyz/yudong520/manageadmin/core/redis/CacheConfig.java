@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Configuration
-@EnableCaching
+@EnableCaching  //开启缓存
 public class CacheConfig   extends CachingConfigurerSupport {
     @Bean
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
@@ -50,14 +50,16 @@ public class CacheConfig   extends CachingConfigurerSupport {
     }
 
 
-
-
-
+    /**
+     * 用redis作为cache管理
+     * @param redisConnectionFactory
+     * @return
+     */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         return new RedisCacheManager(
                 RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory),
-                this.getRedisCacheConfigurationWithTtl(30*60), // 默认策略，未配置的 key 会使用这个
+                this.getRedisCacheConfigurationWithTtl(60), // 默认策略，未配置的 key 会使用这个
                 this.getRedisCacheConfigurationMap() // 指定 key 策略
         );
     }
@@ -87,6 +89,10 @@ public class CacheConfig   extends CachingConfigurerSupport {
         return redisCacheConfiguration;
     }
 
+    /**
+     * cache的生产策略
+     * @return
+     */
     @Bean
     public KeyGenerator wiselyKeyGenerator() {
         return new KeyGenerator() {
