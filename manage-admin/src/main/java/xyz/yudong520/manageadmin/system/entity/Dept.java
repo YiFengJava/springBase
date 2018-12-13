@@ -1,5 +1,6 @@
 package xyz.yudong520.manageadmin.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,7 +24,8 @@ public class Dept implements Serializable {
 
     @ManyToOne(optional=false)
     private Company company;
-    @ManyToMany()
+    @JsonIgnore
+    @ManyToMany
     @JoinTable(name = "tb_role_dept",joinColumns = { @JoinColumn(referencedColumnName = "id",name="did") }, inverseJoinColumns = {
             @JoinColumn(referencedColumnName = "id",name="rid") })
     private Set<Role> roleSet;

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>Smart - 主页</title>
+    <title>manage-admin - 主页</title>
     <base href="/">
     <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
     <link th:href="@{/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element" style="padding: 8px 30px 10px 38px;">
 
-                        <span class="block m-b-xs">
+                        <span class="block m-b-xs" >
                     	    <img alt="image" class="img-circle" src="/images/x.png" width="64px" height="64px"/>
                                <!--/@if(isEmpty(avatar)){-->
                                     <!--src="${ctxPath}/static/img/alipic.jpg"-->
@@ -36,77 +36,223 @@
                                <!--/@} -->
                         </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span>
-                       		<span class="m-t-xs"><strong class="font-bold">大东</strong></span>
-                        	<span class="text-muted text-xs">后台管理员<b class="caret"></b></span>
+                        <span sec:authorize="isAuthenticated()">
+                       		<!--<span class="m-t-xs"><strong class="font-bold"><span sec:authentication="name"></span></strong></span>-->
+                        	<span class="text-muted text-xs"><span sec:authentication="principal.nickName"></span><b class="caret"></b></span>
                         </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a class="J_menuItem" href="/mgr/user_info">个人资料</a></li>
                             <li><a class="J_menuItem" href="/mgr/user_chpwd">修改密码</a></li>
                             <li class="divider"></li>
-                            <li><a href="/logout">安全退出</a>
+                            <li> <a th:href="@{/login/logout}">退出登陆</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="logo-element">Smart
+                    <div class="logo-element">manage-admin
                     </div>
                 </li>
-
-                <!--/@for(title in titles){-->
-                <!--/@if(tool.isEmpty(title.children)){-->
-                <!--<li>-->
-                    <!--<a class="J_menuItem" href="/a/a" name="tabMenuItem">-->
-                        <!--<i class="fa fa-home"></i>-->
-                        <!--<span class="nav-label">系统管理</span>-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--/@}else{-->
-                <li>
-                    <a href="#">
-                        <i class="fa fa-home"></i>
-                        <span class="nav-label">系统管理</span>
+                <li  th:each="menuItem,iterStat : ${menu}">
+                    <a href="${menuItem.value}" >
+                        <i class="${menuItem.ionc}"></i>
+                        <span class="nav-label" th:text="${menuItem.name}">一级菜单名称</span>
                         <span class="fa arrow"></span>
                     </a>
-                    <ul class="nav nav-second-level">
-                        <!--/@for(subTitle in title.children){-->
-                        <!--/@if(tool.isEmpty(subTitle.children)){-->
-                        <!--<li>-->
-                            <!--<a class="J_menuItem" href="/a" name="tabMenuItem">用户管理</a>-->
-                        <!--</li>-->
-                        <!--/@}else{-->
-                        <li>
-                            <a href="#">用户管理<span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                <!--/@for(thirdTitle in subTitle.children){-->
-                                <li>
-                                    <a class="J_menuItem" href="${ctxPath}${thirdTitle.url}" name="tabMenuItem">用户添加</a>
+                    <ul class="nav nav-second-level"  th:if="${ not #lists.isEmpty(menuItem.childMenu) }">
+                        <li  th:each="menuChildItem,iterStats : ${menuItem.childMenu}">
+                            <a href="${menuChildItem.value}" >
+                                <span class="nav-label"  th:text="${menuChildItem.name}">
+                                    二级菜单名称
+                                </span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-third-level"  th:if="${ not #lists.isEmpty(menuChildItem.childMenu) }">
+                                <li th:each="menuChildOfChildItem,iterStats : ${menuChildItem.childMenu}">
+                                    <a class="J_menuItem" href="${menuChildOfChildItem.value}" name="tabMenuItem">
+                                         <span th:text="${menuChildOfChildItem.name}">
+                                            三级菜单名称
+                                        </span>
+                                    </a>
                                 </li>
-                                <!--/@}-->
                             </ul>
                         </li>
-                        <!--/@}-->
-                        <!--/@}-->
                     </ul>
                 </li>
-                <!--/@}-->
-                <!--/@}-->
-
             </ul>
         </div>
     </nav>
-
-<!--<div th:object="${authentication.principal}">-->
-    <!--<span th:text="*{username}">...</span>-->
-<!--</div>-->
     <!--左侧导航结束-->
 
+
     <!--右侧部分开始-->
-    <!--/@include("common/_right.html"){}-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li id = "clearCache">
+                        <a href="javascript:;">
+                            <i class="fa fa-recycle"></i> 清除缓存
+                        </a>
+                    </li>
+                    <!--<li id = "lock">-->
+                    <!--<a href="javascript:;">-->
+                    <!--<i class="fa fa-lock"></i> 锁屏 (Alt+L)-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <li class="dropdown hidden-xs">
+                        <a class="right-sidebar-toggle" aria-expanded="false">
+                            <i class="fa fa-tasks"></i> 主题
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row content-tabs">
+            <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+            </button>
+            <nav class="page-tabs J_menuTabs">
+                <div class="page-tabs-content">
+                    <a href="javascript:;" class="active J_menuTab"  data-id="/index_home">首页</a>
+                </div>
+            </nav>
+            <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+            </button>
+            <div class="btn-group roll-nav roll-right">
+                <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                    <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                    </li>
+                    <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/index_home}" frameborder="0" data-id="/index_home" seamless></iframe>
+        </div>
+        <div class="footer">
+            <div class="pull-right">&copy; 2016-2018 <a href="" target="_blank">蚁巢智慧社区</a>
+            </div>
+        </div>
+    </div>
+
     <!--右侧部分结束-->
 
     <!--右侧边栏开始-->
-    <!--/@include("common/_theme.html"){}-->
+
+    <div id="right-sidebar">
+        <div class="sidebar-container">
+
+            <ul class="nav nav-tabs navs-3">
+                <li class="active"><a data-toggle="tab" href="#tab-1"> <i
+                        class="fa fa-gear"></i> 主题
+                </a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane active">
+                    <!--<div class="setings-item">-->
+                        <!--<span>开启websocket</span>-->
+                        <!--<div class="switch">-->
+                            <!--<div class="onoffswitch">-->
+                                <!--<input type="checkbox" name="websoketjs"-->
+                                       <!--class="onoffswitch-checkbox" id="websoketjs"> <label-->
+                                    <!--class="onoffswitch-label" for="websoketjs"> <span-->
+                                    <!--class="onoffswitch-inner"></span> <span-->
+                                    <!--class="onoffswitch-switch"></span>-->
+                            <!--</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="sidebar-title">
+                        <h3>
+                            <i class="fa fa-comments-o"></i> 主题设置
+                        </h3>
+                        <small><i class="fa fa-tim"></i>
+                            你可以从这里选择和预览主题的布局和样式，这些设置会被保存在本地，下次打开的时候会直接应用这些设置。</small>
+                    </div>
+                    <div class="skin-setttings">
+                        <div class="title">主题设置</div>
+                        <div class="setings-item">
+                            <span>收起左侧菜单</span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="collapsemenu"
+                                           class="onoffswitch-checkbox" id="collapsemenu"> <label
+                                        class="onoffswitch-label" for="collapsemenu"> <span
+                                        class="onoffswitch-inner"></span> <span
+                                        class="onoffswitch-switch"></span>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                            <span>固定顶部</span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="fixednavbar"
+                                           class="onoffswitch-checkbox" id="fixednavbar"> <label
+                                        class="onoffswitch-label" for="fixednavbar"> <span
+                                        class="onoffswitch-inner"></span> <span
+                                        class="onoffswitch-switch"></span>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                            <span> 固定宽度 </span>
+
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="boxedlayout"
+                                           class="onoffswitch-checkbox" id="boxedlayout"> <label
+                                        class="onoffswitch-label" for="boxedlayout"> <span
+                                        class="onoffswitch-inner"></span> <span
+                                        class="onoffswitch-switch"></span>
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title">皮肤选择</div>
+                        <div class="setings-item default-skin nb">
+						<span class="skin-name "> <a href="#" class="s-skin-0">
+								默认皮肤 </a>
+						</span>
+                        </div>
+                        <div class="setings-item blue-skin nb">
+						<span class="skin-name "> <a href="#" class="s-skin-1">
+								蓝色主题 </a>
+						</span>
+                        </div>
+                        <div class="setings-item yellow-skin nb">
+						<span class="skin-name "> <a href="#" class="s-skin-3">
+								黄色/紫色主题 </a>
+						</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div  hidden="true">
+        <input type="text" id="ttsText">
+        <input type="button" id="tts_btn" onclick="doTTS()" value="播放">
+    </div>
+    <div id="bdtts_div_id">
+        <audio id="tts_autio_id" autoplay="autoplay">
+        </audio>
+    </div>
     <!--右侧边栏结束-->
 </div>
 
@@ -117,10 +263,7 @@
 <script type="text/javascript" th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 <script type="text/javascript"  th:src="@{/js/plugins/layer/layer.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/plugins/pace/pace.min.js}"></script>
-
 <script type="text/javascript"  th:src="@{/js/hplus.js}"></script>
-
-
 
 </body>
 

@@ -16,17 +16,43 @@ mysecurity:
         smsCode:
             length: 6
             expireIn: 60
-
-
 server:
-    port: 80   # 端口号
-    session: 60   # session的过期时间
+    port: 80  # 端口号
     tomcat:
-          max-threads: 100
-          min-spare-threads: 20
-          connection-timeout: 6000
+        max-threads: 100
+        min-spare-threads: 20
+        connection-timeout: 6000
+#    servlet:
+#      session:
+#        timeout: 60
+          # 默认为30分钟，这里的单位是秒
+#          server.session.timeout = 10 * 60
 
 spring:
+    redis:   #redis内存数据库地址配置
+        database: 0
+        timeout: 5000
+        host: 47.92.1.158
+        password: ladlee123
+        port: 6379
+        lettuce:
+          pool:
+            max-active: 500
+            max-idle: 100
+            min-idle: 20
+            max-wait: -1ms
+            shutdown-timeout: 100
+
+
+    session:            #session使用redis进行储存
+        store-type: redis
+        redis:
+            namespace: authSession
+            flush-mode: immediate
+#    cache:    #cache使用redis储存
+#        type: redis
+
+
     datasource:
         url: jdbc:mysql://120.78.80.130:3306/manage-admin?useUnicode=true&characterEncoding=UTF-8&useSSL=false
         username: root
@@ -43,6 +69,9 @@ spring:
             ddl-auto: update
         show-sql: true
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        properties:
+            hibernate:
+                enable_lazy_load_no_trans: true
     jackson:
         serialization:
             indent-output: true
@@ -52,6 +81,5 @@ spring:
         enabled: true
         check-template: true
         cache: false
-
 
 

@@ -1,10 +1,12 @@
 package xyz.yudong520.manageadmin.system.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -27,22 +29,52 @@ public class Role implements Serializable {
 
     @Column(name = "descs")
     private String descs;
+    @JsonIgnore
     @ManyToMany()
     @JoinTable(name = "tb_role_community",joinColumns = { @JoinColumn(name = "rid",referencedColumnName = "id") }, inverseJoinColumns = {
             @JoinColumn(referencedColumnName = "id",name="cid") })
     private Set<Community> communitySet;
+    @JsonIgnore
     @ManyToMany()
     @JoinTable(name = "tb_role_dept",joinColumns = { @JoinColumn(referencedColumnName = "id",name="rid") }, inverseJoinColumns = {
             @JoinColumn(referencedColumnName = "id",name="did") })
     private Set<Dept> deptSet;
-    @ManyToMany()
+    @JsonIgnore
+    @ManyToMany
     @JoinTable(name = "tb_role_user",joinColumns = { @JoinColumn(referencedColumnName = "id",name="rid") }, inverseJoinColumns = {
             @JoinColumn(referencedColumnName = "userId",name="uid") })
     private Set<User> userSet;
 
-    @ManyToMany()
+    @JsonIgnore
+    @ManyToMany
     @JoinTable(name = "tb_role_permissions",joinColumns = { @JoinColumn(referencedColumnName = "id",name="rid") }, inverseJoinColumns = {
             @JoinColumn(referencedColumnName = "id",name="pid") })
     private Set<Permissions> permissionsSet;
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return Objects.equals(id, role.id) &&
+                Objects.equals(name, role.name) &&
+                Objects.equals(value, role.value) &&
+                Objects.equals(descs, role.descs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, value, descs);
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                ", descs='" + descs + '\'' +
+                '}';
+    }
 }

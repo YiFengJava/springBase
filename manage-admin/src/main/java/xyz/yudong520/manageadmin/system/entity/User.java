@@ -1,6 +1,7 @@
 package xyz.yudong520.manageadmin.system.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.security.SocialUserDetails;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -82,7 +84,15 @@ public class User  implements UserDetails ,SocialUserDetails,Serializable {
 
     @Column(name = "reserve3")
     private String reserve3;  //备用字段
-
+    @Transient
+    private boolean accountNonExpired;
+    @Transient
+    private boolean    accountNonLocked;
+    @Transient
+    private boolean credentialsNonExpired;
+    @Transient
+    private boolean   enabled;
+    @JsonIgnore
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name = "tb_role_user",joinColumns = { @JoinColumn(referencedColumnName = "userId",name="uid") }, inverseJoinColumns = {
             @JoinColumn(referencedColumnName = "id",name="rid") })
@@ -256,6 +266,23 @@ public class User  implements UserDetails ,SocialUserDetails,Serializable {
     }
 
 
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -274,5 +301,61 @@ public class User  implements UserDetails ,SocialUserDetails,Serializable {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(nickName, user.nickName) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(mobile, user.mobile) &&
+                Objects.equals(handImge, user.handImge) &&
+                Objects.equals(age, user.age) &&
+                Objects.equals(sex, user.sex) &&
+                Objects.equals(birthday, user.birthday) &&
+                Objects.equals(dateStatus, user.dateStatus) &&
+                Objects.equals(createdTime, user.createdTime) &&
+                Objects.equals(createdEmp, user.createdEmp) &&
+                Objects.equals(updatedTime, user.updatedTime) &&
+                Objects.equals(updatedEmp, user.updatedEmp) &&
+                Objects.equals(version, user.version) &&
+                Objects.equals(reserve1, user.reserve1) &&
+                Objects.equals(reserve2, user.reserve2) &&
+                Objects.equals(reserve3, user.reserve3);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(userId, username, nickName, password, mobile, handImge, age, sex, birthday, dateStatus, createdTime, createdEmp, updatedTime, updatedEmp, version, reserve1, reserve2, reserve3);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", username='" + username + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", password='" + password + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", handImge='" + handImge + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", birthday=" + birthday +
+                ", dateStatus=" + dateStatus +
+                ", createdTime=" + createdTime +
+                ", createdEmp='" + createdEmp + '\'' +
+                ", updatedTime=" + updatedTime +
+                ", updatedEmp='" + updatedEmp + '\'' +
+                ", version='" + version + '\'' +
+                ", reserve1='" + reserve1 + '\'' +
+                ", reserve2='" + reserve2 + '\'' +
+                ", reserve3='" + reserve3 + '\'' +
+                '}';
     }
 }

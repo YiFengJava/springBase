@@ -1,5 +1,6 @@
 package xyz.yudong520.manageadmin.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Community implements Serializable {
 
     @ManyToOne(optional=false)
     private Company company;
+    @JsonIgnore
     @ManyToMany()
     @JoinTable(name = "tb_role_community",joinColumns = { @JoinColumn(referencedColumnName = "id",name="cid") }, inverseJoinColumns = {
             @JoinColumn(referencedColumnName = "id",name="rid") })

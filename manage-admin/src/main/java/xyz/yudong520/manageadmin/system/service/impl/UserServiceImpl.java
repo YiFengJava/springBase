@@ -42,6 +42,7 @@ public class UserServiceImpl implements UserService {
         roleSet.forEach((Role r)->
         rids.add(r.getId())
         );
+//        roleSet.size()
         Set<Permissions> permisseionsTableByRoles = authorityService.getPermisseionsTableByRoles(rids);
         user1.setAuthorities(permisseionsTableByRoles);
         return user1;
