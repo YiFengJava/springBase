@@ -29,8 +29,11 @@ ydsecurity:
             length: 6
             expireIn: 180
             url:
-
-
+    social:
+        qq:
+            provider_id: qq
+            app_id: 101521863
+            app_secret: a4098bc6065314509978c77952d5a15e
 
 server:
     port: 80  # 端口号

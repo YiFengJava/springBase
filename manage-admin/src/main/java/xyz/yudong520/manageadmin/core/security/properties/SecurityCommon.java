@@ -12,4 +12,6 @@ public class SecurityCommon {
 
     private ValidateCode validateCode;
 
+    private Social social;
+
 }

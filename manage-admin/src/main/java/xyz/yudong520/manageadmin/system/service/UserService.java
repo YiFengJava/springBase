@@ -4,7 +4,10 @@ import xyz.yudong520.manageadmin.system.entity.User;
 
 public interface UserService {
 
+
     User getUserByUsername(String username);
 
     User loadUserByMobile(String mobile);
+
+    User loadUserByUserId(String userId);
 }

@@ -38,6 +38,8 @@ public class SecurityService implements UserDetailsService,SocialUserDetailsServ
 
     @Override
     public User loadUserByUserId(String userId) throws UsernameNotFoundException {
-        return null;
+        logger.info("正在登陆的用户的userId为："+userId);
+        User user=userService.loadUserByUserId(userId);
+        return user;
     }
 }

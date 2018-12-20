@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.social.security.SpringSocialConfigurer;
 import xyz.yudong520.manageadmin.core.security.service.SecurityService;
 import xyz.yudong520.manageadmin.core.security.session.SessionStrategy;
 import xyz.yudong520.manageadmin.core.security.validate.mobile.SmsLoginConfig;
@@ -36,6 +37,10 @@ public class SecurityConfig extends FormLoginConfig {
     private DataSource dataSource;
 
     @Autowired
+    public SpringSocialConfigurer springSocialConfigurer;
+
+
+    @Autowired
     private SmsLoginConfig smsLoginConfig;
 
     //security核心方法，复写该方法
@@ -48,11 +53,16 @@ public class SecurityConfig extends FormLoginConfig {
                 .and()
                 .apply(validateFilterConfig)  //加上校验验证码
                 .and()
+                .apply(springSocialConfigurer)
+                .and()
                 .headers().frameOptions().disable()  //用iframe
                 .and()
                 .authorizeRequests() //请求授权
                 .antMatchers( "/login/auth","/login/page","/login/logout","/session/invalid",
                         "/code/*",
+                        "auth/qq",
+                        "/login/regist",
+                        "/signin",
                         "/login/smsLogin",
                         "/css/**","/fonts/**","/images/**","/js/**","/json/**","/skin/**","/*.ico")
                 .permitAll()       //上面的匹配都允许通过

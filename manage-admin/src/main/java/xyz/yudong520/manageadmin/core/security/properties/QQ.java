@@ -1,11 +1,9 @@
-package xyz.yudong520.manageadmin.core.security.propertiesbak;
-
+package xyz.yudong520.manageadmin.core.security.properties;
 
 import lombok.Data;
 
 @Data
-public class QQProperties{
-
+public class QQ {
     private String providerId = "qq";
 
     private String appId;
