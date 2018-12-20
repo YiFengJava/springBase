@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.stereotype.Component;
+import xyz.yudong520.manageadmin.core.security.exception.MobileNotFoundException;
 import xyz.yudong520.manageadmin.system.entity.User;
 import xyz.yudong520.manageadmin.system.service.UserService;
 
@@ -27,6 +28,12 @@ public class SecurityService implements UserDetailsService,SocialUserDetailsServ
         logger.info("正在登陆的用户是============》"+username);
         User userByUsername = userService.getUserByUsername(username);
         return userByUsername;
+    }
+
+    public User loadUserByMobile(String mobile) throws MobileNotFoundException {
+        logger.info("正在登陆的手机号为："+mobile);
+        User user=userService.loadUserByMobile(mobile);
+        return user;
     }
 
     @Override

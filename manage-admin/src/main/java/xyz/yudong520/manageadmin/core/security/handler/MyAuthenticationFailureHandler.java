@@ -10,8 +10,6 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
-import xyz.yudong520.manageadmin.core.security.properties.LoginType;
-import xyz.yudong520.manageadmin.core.security.properties.SecurityProperties;
 import xyz.yudong520.manageadmin.core.security.support.SimpleResponse;
 
 import javax.servlet.ServletException;
@@ -29,9 +27,7 @@ public class MyAuthenticationFailureHandler extends SimpleUrlAuthenticationFailu
     @Autowired
     private ObjectMapper objectMapper;
 
-    //安全配置对象
-    @Autowired
-    private SecurityProperties securityProperties;
+
 
     //日志器
     private Logger logger= LoggerFactory.getLogger(AuthenticationFailureHandler.class);
@@ -54,7 +50,7 @@ public class MyAuthenticationFailureHandler extends SimpleUrlAuthenticationFailu
 //            设置comtenttype
             httpServletResponse.setContentType("application/json;charset=UTF-8");
 //            返回给页面
-            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),"认证失败",null)));
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),e.getMessage(),null)));
 //        }else {
 //            //如果是配的是页面跳转 则掉父类的方法
 //            super.onAuthenticationFailure(httpServletRequest,httpServletResponse,e);

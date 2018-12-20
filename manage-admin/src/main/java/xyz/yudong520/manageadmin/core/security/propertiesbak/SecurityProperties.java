@@ -1,4 +1,4 @@
-package xyz.yudong520.manageadmin.core.security.properties;
+package xyz.yudong520.manageadmin.core.security.propertiesbak;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

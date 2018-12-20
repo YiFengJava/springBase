@@ -7,13 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import xyz.yudong520.manageadmin.core.security.properties.LoginType;
-import xyz.yudong520.manageadmin.core.security.properties.SecurityProperties;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,9 +35,6 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
     //请求转发的处理工具
     private RedirectStrategy redirectStrategy =new DefaultRedirectStrategy();
 
-    //自定义安全配置
-    @Autowired
-    private SecurityProperties securityProperties;
 
     /**
      * 登陆成功要执行的方法
