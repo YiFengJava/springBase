@@ -39,7 +39,6 @@ public class QQUserInfo {
     private String    level;
     private String    province;
     private String     is_yellow_year_vip;
-
     private String year;
     private String     city;
     private String      constellation;

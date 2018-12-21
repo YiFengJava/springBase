@@ -1,8 +1,10 @@
 package xyz.yudong520.manageadmin.core.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +16,7 @@ import xyz.yudong520.manageadmin.core.security.session.SessionStrategy;
 import xyz.yudong520.manageadmin.core.security.validate.mobile.SmsLoginConfig;
 
 import javax.sql.DataSource;
+import java.util.Locale;
 
 /**
  * security的核心配置全部在这里集中
@@ -97,4 +100,17 @@ public class SecurityConfig extends FormLoginConfig {
         return new BCryptPasswordEncoder();
     }
 
+
+    /***
+     * 登录错误提示 中文
+     * org.springframework.security.messages
+     * @return
+     */
+//    @Bean
+//    public MessageSource messageSource() {
+//        Locale.setDefault(Locale.SIMPLIFIED_CHINESE);
+//        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+//        messageSource.addBasenames("classpath:org/springframework/security/messages");
+//        return messageSource;
+//    }
 }

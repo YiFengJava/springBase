@@ -3,9 +3,9 @@ package xyz.yudong520.manageadmin.core.security.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import xyz.yudong520.manageadmin.core.security.handler.MyAuthenticationFailureHandler;
 import xyz.yudong520.manageadmin.core.security.handler.MyAuthenticationSuccessHandler;
+import xyz.yudong520.manageadmin.core.security.handler.MySecurityContextLogoutHandler;
 
 /**
  * 这是核心的所有的登陆方式都会有一个表单用户名密码登陆
@@ -20,6 +20,7 @@ public class FormLoginConfig
 //
     @Autowired
     private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
     /**
      * 加入用户名密码登陆的配置
      * @param http
@@ -38,7 +39,11 @@ public class FormLoginConfig
 //                .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login/logout");
+                .logoutUrl("/login/logout")
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/login/logoutsuccess")
+                .addLogoutHandler(new MySecurityContextLogoutHandler())
+                .invalidateHttpSession(true);
 //                .permitAll();
     }
 }

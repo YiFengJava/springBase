@@ -83,7 +83,7 @@ if (XRegExp) {
 
 
     //---------------------------------
-    //  Public properties
+    //  Public propertiesbak
     //---------------------------------
 
     XRegExp.version = "1.5.1";
@@ -153,7 +153,7 @@ if (XRegExp) {
     // Accepts a `RegExp` instance; returns a copy with the `/g` flag set. The copy has a fresh
     // `lastIndex` (set to zero). If you want to copy a regex without forcing the `global`
     // property, use `XRegExp(regex)`. Do not use `RegExp(regex)` because it will not preserve
-    // special properties required for named capture
+    // special propertiesbak required for named capture
     XRegExp.copyAsGlobal = function (regex) {
         return clone(regex, "g");
     };
@@ -216,7 +216,7 @@ if (XRegExp) {
 
     // Accepts a string and an array of regexes; returns the result of using each successive regex
     // to search within the matches of the previous regex. The array of regexes can also contain
-    // objects with `regex` and `backref` properties, in which case the named or numbered back-
+    // objects with `regex` and `backref` propertiesbak, in which case the named or numbered back-
     // references specified are passed forward to the next regex or returned. E.g.:
     // var xregexpImgFileNames = XRegExp.matchChain(html, [
     //     {regex: /<img\b([^>]+)>/i, backref: 1}, // <img> tag attributes
@@ -286,7 +286,7 @@ if (XRegExp) {
                     }
                 });
             }
-            // Attach named capture properties
+            // Attach named capture propertiesbak
             if (this._xregexp && this._xregexp.captureNames) {
                 for (var i = 1; i < match.length; i++) {
                     name = this._xregexp.captureNames[i - 1];
@@ -358,7 +358,7 @@ if (XRegExp) {
         if (Object.prototype.toString.call(replacement) === "[object Function]") {
             result = nativ.replace.call(this + "", search, function () {
                 if (captureNames) {
-                    // Change the `arguments[0]` string primitive to a String object which can store properties
+                    // Change the `arguments[0]` string primitive to a String object which can store propertiesbak
                     arguments[0] = new String(arguments[0]);
                     // Store named backreferences on `arguments[0]`
                     for (var i = 0; i < captureNames.length; i++) {
@@ -494,7 +494,7 @@ if (XRegExp) {
     //---------------------------------
 
     // Supporting function for `XRegExp`, `XRegExp.copyAsGlobal`, etc. Returns a copy of a `RegExp`
-    // instance with a fresh `lastIndex` (set to zero), preserving properties required for named
+    // instance with a fresh `lastIndex` (set to zero), preserving propertiesbak required for named
     // capture. Also allows adding new flags in the process of copying the regex
     function clone (regex, additionalFlags) {
         if (!XRegExp.isRegExp(regex))
@@ -2435,7 +2435,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
         // http://davidchambersdesign.com/
         var keywords   = 'after before beginning continue copy each end every from return get global in local named of set some that the then times to where whose with without';
         var ordinals   = 'first second third fourth fifth sixth seventh eighth ninth tenth last front back middle';
-        var specials   = 'activate add alias AppleScript ask attachment boolean class constant delete duplicate empty exists false id integer list make message modal modified new no paragraph pi properties quit real record remove rest result reveal reverse run running save string true word yes';
+        var specials   = 'activate add alias AppleScript ask attachment boolean class constant delete duplicate empty exists false id integer list make message modal modified new no paragraph pi propertiesbak quit real record remove rest result reveal reverse run running save string true word yes';
 
         this.regexList = [
 

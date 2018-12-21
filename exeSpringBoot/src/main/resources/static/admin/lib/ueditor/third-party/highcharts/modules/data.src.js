@@ -91,7 +91,7 @@
 		this.init(dataOptions, chartOptions);
 	};
 	
-	// Set the prototype properties
+	// Set the prototype propertiesbak
 	Highcharts.extend(Data.prototype, {
 		
 	/**

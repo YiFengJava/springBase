@@ -4,11 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/manage-admin/manage-admin.iml" filepath="$PROJECT_DIR$/manage-admin/manage-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/mySpringBase.iml" filepath="$PROJECT_DIR$/mySpringBase.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springsecuritystudy/security-app/security-app.iml" filepath="$PROJECT_DIR$/springsecuritystudy/security-app/security-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springsecuritystudy/security-browser/security-browser.iml" filepath="$PROJECT_DIR$/springsecuritystudy/security-browser/security-browser.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springsecuritystudy/security-core/security-core.iml" filepath="$PROJECT_DIR$/springsecuritystudy/security-core/security-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springsecuritystudy/security-demo/security-demo.iml" filepath="$PROJECT_DIR$/springsecuritystudy/security-demo/security-demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springsecuritystudy/spring-security-study.iml" filepath="$PROJECT_DIR$/springsecuritystudy/spring-security-study.iml" />
     </modules>
   </component>
 </project>

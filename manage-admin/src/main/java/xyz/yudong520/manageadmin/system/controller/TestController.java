@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import xyz.yudong520.manageadmin.core.security.authorized.Authorized;
 import xyz.yudong520.manageadmin.system.entity.User;
 import xyz.yudong520.manageadmin.system.service.AuthorityService;
 
@@ -41,6 +42,13 @@ public class TestController {
         return  authorityService.testEcach(username);
     }
 
+
+    @GetMapping(value = "/thtest")
+    @ResponseBody
+    @Authorized(value = "测试权限")
+    public Object jklsjdf(){
+        return "测试";
+    }
 
     @GetMapping(value = "/test/ecach1")
     @ResponseBody

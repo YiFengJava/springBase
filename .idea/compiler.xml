@@ -7,10 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="manage-admin" />
-        <module name="security-app" />
-        <module name="security-browser" />
-        <module name="security-core" />
-        <module name="security-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

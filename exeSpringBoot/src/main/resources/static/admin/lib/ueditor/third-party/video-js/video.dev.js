@@ -132,7 +132,7 @@ vjs.players = {};
  *       }
  *     });
  *
- * Other methods and properties can be added the same way, or directly to the
+ * Other methods and propertiesbak can be added the same way, or directly to the
  * prototype.
  *
  *    var Animal = CoreObject.extend({
@@ -154,7 +154,7 @@ vjs.players = {};
  *    var fluffy = Animal.create('Fluffy');
  *    fluffy.getName(); // -> Fluffy
  *
- * Methods and properties can be overridden in subclasses.
+ * Methods and propertiesbak can be overridden in subclasses.
  *
  *     var Horse = Animal.extend({
  *       sound: 'Neighhhhh!'
@@ -180,7 +180,7 @@ vjs.CoreObject = vjs['CoreObject'] = function(){};
  *     var Animal = CoreObject.extend();
  *     var Horse = Animal.extend();
  *
- * @param {Object} props Functions and properties to be applied to the
+ * @param {Object} props Functions and propertiesbak to be applied to the
  *                       new object's prototype
  * @return {vjs.CoreObject} An object that inherits from CoreObject
  * @this {*}
@@ -217,7 +217,7 @@ vjs.CoreObject.extend = function(props){
   // Make a function for creating instances
   subObj.create = vjs.CoreObject.create;
 
-  // Extend subObj's prototype with functions and other properties from props
+  // Extend subObj's prototype with functions and other propertiesbak from props
   for (var name in props) {
     if (props.hasOwnProperty(name)) {
       subObj.prototype[name] = props[name];
@@ -420,7 +420,7 @@ vjs.fixEvent = function(event) {
 
     event = {};
     // Clone the old object so that we can modify the values event = {};
-    // IE8 Doesn't like when you mess with native event properties
+    // IE8 Doesn't like when you mess with native event propertiesbak
     // Firefox returns false for event.hasOwnProperty('type') and other props
     //  which makes copying more difficult.
     // TODO: Probably best to create a whitelist of event props
@@ -521,7 +521,7 @@ vjs.trigger = function(elem, event) {
   if (typeof event === 'string') {
     event = { type:event, target:elem };
   }
-  // Normalizes the event properties.
+  // Normalizes the event propertiesbak.
   event = vjs.fixEvent(event);
 
   // If the passed element has a dispatcher, executes the established handlers.
@@ -592,9 +592,9 @@ vjs.one = function(elem, type, fn) {
 var hasOwnProp = Object.prototype.hasOwnProperty;
 
 /**
- * Creates an element and applies properties.
+ * Creates an element and applies propertiesbak.
  * @param  {String=} tagName    Name of tag to be created.
- * @param  {Object=} properties Element properties to be applied.
+ * @param  {Object=} properties Element propertiesbak to be applied.
  * @return {Element}
  * @private
  */
@@ -605,7 +605,7 @@ vjs.createEl = function(tagName, properties){
 
   for (propName in properties){
     if (hasOwnProp.call(properties, propName)) {
-      //el[propName] = properties[propName];
+      //el[propName] = propertiesbak[propName];
       // Not remembering why we were checking for dash
       // but using setAttribute means you have to use getAttribute
 
@@ -666,7 +666,7 @@ vjs.obj = {};
 /**
  * Loop through each property in an object and call a function
  * whose arguments are (key,value)
- * @param  {Object}   obj Object of properties
+ * @param  {Object}   obj Object of propertiesbak
  * @param  {Function} fn  Function to be called on each property.
  * @this {*}
  * @private
@@ -697,7 +697,7 @@ vjs.obj.merge = function(obj1, obj2){
 };
 
 /**
- * Merge two objects, and merge any properties that are objects
+ * Merge two objects, and merge any propertiesbak that are objects
  * instead of just overwriting one. Uses to merge options hashes
  * where deeper default settings are important.
  * @param  {Object} obj1 Object to override
@@ -717,7 +717,7 @@ vjs.obj.deepMerge = function(obj1, obj2){
       val1 = obj1[key];
       val2 = obj2[key];
 
-      // Check if both properties are pure objects and do a deep merge if so
+      // Check if both propertiesbak are pure objects and do a deep merge if so
       if (vjs.obj.isPlain(val1) && vjs.obj.isPlain(val2)) {
         obj1[key] = vjs.obj.deepMerge(val1, val2);
       } else {
@@ -865,7 +865,7 @@ vjs.removeData = function(el){
  */
 vjs.isEmpty = function(obj) {
   for (var prop in obj) {
-    // Inlude null properties as empty.
+    // Inlude null propertiesbak as empty.
     if (obj[prop] !== null) {
       return false;
     }
@@ -973,7 +973,7 @@ vjs.TOUCH_ENABLED = !!(('ontouchstart' in window) || window.DocumentTouch && doc
 
 /**
  * Get an element's attribute values, as defined on the HTML tag
- * Attributs are not the same as properties. They're defined on the tag
+ * Attributs are not the same as propertiesbak. They're defined on the tag
  * or with setAttribute (which shouldn't be used with HTML)
  * This will return true or false for boolean attributes.
  * @param  {Element} tag Element from which to get tag attributes
@@ -986,7 +986,7 @@ vjs.getAttributeValues = function(tag){
   obj = {};
 
   // known boolean attributes
-  // we can check for matching boolean properties, but older browsers
+  // we can check for matching boolean propertiesbak, but older browsers
   // won't know about HTML5 boolean attributes that we still read from
   knownBooleans = ','+'autoplay,controls,loop,muted,default'+',';
 
@@ -1420,7 +1420,7 @@ vjs.Component.prototype.options_;
  * Deep merge of options objects
  *
  * Whenever a property is an object on both options objects
- * the two properties will be merged using vjs.obj.deepMerge.
+ * the two propertiesbak will be merged using vjs.obj.deepMerge.
  *
  * This is used for merging options for child components. We
  * want it to be easy to override individual options on a child
@@ -2141,7 +2141,7 @@ vjs.Component.prototype.emitTapEvents = function(){
       if (touchTime < 250) {
         this.trigger('tap');
         // It may be good to copy the touchend event object and change the
-        // type to tap, if the other event properties aren't exact after
+        // type to tap, if the other event propertiesbak aren't exact after
         // vjs.fixEvent runs (e.g. event.target)
       }
     }
@@ -6167,7 +6167,7 @@ vjs.TextTrack.prototype.label = function(){
 };
 
 /**
- * All cues of the track. Cues have a startTime, endTime, text, and other properties.
+ * All cues of the track. Cues have a startTime, endTime, text, and other propertiesbak.
  * Spec def: readonly attribute TextTrackCueList cues;
  * @private
  */

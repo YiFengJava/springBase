@@ -2264,7 +2264,7 @@ wrap(colProto, 'animate', polarAnimate);
 
 
 /**
- * Throw in a couple of properties to let setTooltipPoints know we're indexing the points
+ * Throw in a couple of propertiesbak to let setTooltipPoints know we're indexing the points
  * in degrees (0-360), not plot pixel width.
  */
 wrap(seriesProto, 'setTooltipPoints', function (proceed, renew) {

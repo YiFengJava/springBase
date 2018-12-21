@@ -1,5 +1,6 @@
 package xyz.yudong520.manageadmin.system.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,10 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping(value = "/login")
+@Slf4j
 public class LoginController {
 
-    private Logger logger =LoggerFactory.getLogger(LoginController.class);
+//    private Logger logger =LoggerFactory.getLogger(LoginController.class);
 
     //请求的缓存  security中的请求缓存工具类
     private RequestCache requestCache=new HttpSessionRequestCache();
@@ -40,12 +42,17 @@ public class LoginController {
         return  "login.html";
     }
 
-
-    //跳转退出登陆页面
-    @RequestMapping(value = "/logout")
-    public String logoutPage(Model model){
-        return  "logout.html";
+    @GetMapping(value = "/logoutsuccess")
+    private String logoutsuccess(){
+        log.info("退出成功重定向到登陆页面");
+        return  "redirect:login/page";
     }
+
+//    //跳转退出登陆页面
+//    @RequestMapping(value = "/logout")
+//    public String logoutPage(Model model){
+//        return  "logout.html";
+//    }
 
     //自定义登陆认证的接口
     @RequestMapping(value = "/auth")
@@ -57,7 +64,7 @@ public class LoginController {
         if(savedRequest!=null ){
             //得到请求的地址
             String targetUrl=savedRequest.getRedirectUrl();
-            logger.info("引发跳转的请求是："+targetUrl);
+            log.info("引发跳转的请求是："+targetUrl);
             redirectStrategy.sendRedirect(request,response,"/login/page");
 //            if(StringUtils.endsWithIgnoreCase(targetUrl,".html")){
 //                //直接跳转到配置的登陆页面

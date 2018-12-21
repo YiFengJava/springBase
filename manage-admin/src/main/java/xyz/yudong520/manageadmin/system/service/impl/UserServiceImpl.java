@@ -36,14 +36,7 @@ public class UserServiceImpl implements UserService {
         Example<User> example = Example.of(user ,matcher);
         Optional<User> one = userDao.findOne(example);
         User user1 = one.get();
-        Set<Role> roleSet = user1.getRoleSet();
-        Set<String> rids=new HashSet<>();
-        roleSet.forEach((Role r)->
-        rids.add(r.getId())
-        );
-//        roleSet.size()
-        Set<Permissions> permisseionsTableByRoles = authorityService.getPermisseionsTableByRoles(rids);
-        user1.setAuthorities(permisseionsTableByRoles);
+        setAuthoritiesForUser(user1);
         return user1;
     }
 
@@ -58,6 +51,7 @@ public class UserServiceImpl implements UserService {
             throw new MobileNotFoundException("用户不存在");
         }
         User user1 = users.get(0);
+        setAuthoritiesForUser(user1);
         return user1;
     }
 
@@ -65,6 +59,19 @@ public class UserServiceImpl implements UserService {
     public User loadUserByUserId(String userId) {
         Optional<User> byId = userDao.findById(userId);
         User user = byId.get();
+        setAuthoritiesForUser(user);
         return user;
     }
+
+    private void setAuthoritiesForUser(User user){
+        Set<Role> roleSet = user.getRoleSet();
+        Set<String> rids=new HashSet<>();
+        roleSet.forEach((Role r)->
+                rids.add(r.getId())
+        );
+        Set<Permissions> permisseionsTableByRoles = authorityService.getPermisseionsTableByRoles(rids);
+        user.setAuthorities(permisseionsTableByRoles);
+    }
+
+
 }

@@ -28,6 +28,8 @@ public class SystemDaoImpl {
             });
             String s = stringBuffer.toString();
             sql2= s.substring(0, s.length() - 1)+")";
+        }else{
+            return  null;
         }
         String sql=sql1+sql2;
         Query nativeQuery = em.createNativeQuery(

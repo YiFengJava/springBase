@@ -140,7 +140,7 @@ function extend(a, b) {
  * Deep merge two or more objects and return a third object.
  * Previously this function redirected to jQuery.extend(true), but this had two limitations.
  * First, it deep merged arrays, which lead to workarounds in Highcharts. Second,
- * it copied properties from extended prototypes. 
+ * it copied propertiesbak from extended prototypes.
  */
 function merge() {
 	var i,
@@ -182,7 +182,7 @@ function merge() {
 
 /**
  * Take an array and turn into a hash with even number arguments as keys and odd numbers as
- * values. Allows creating constants for commonly used style properties, attributes etc.
+ * values. Allows creating constants for commonly used style propertiesbak, attributes etc.
  * Avoid it in performance critical situations like looping
  */
 function hash() {
@@ -270,7 +270,7 @@ function defined(obj) {
 
 /**
  * Set or get an attribute or an object of attributes. Can't use jQuery attr because
- * it attempts to set expando properties on the SVG element, which is not allowed.
+ * it attempts to set expando propertiesbak on the SVG element, which is not allowed.
  *
  * @param {Object} elem The DOM element to receive the attribute(s)
  * @param {String|Object} prop The property or an abject of key-value pairs
@@ -905,10 +905,10 @@ function arrayMax(data) {
 }
 
 /**
- * Utility method that destroys any SVGElement or VMLElement that are properties on the given object.
- * It loops all properties and invokes destroy if there is a destroy method. The property is
+ * Utility method that destroys any SVGElement or VMLElement that are propertiesbak on the given object.
+ * It loops all propertiesbak and invokes destroy if there is a destroy method. The property is
  * then delete'ed.
- * @param {Object} The object to destroy properties on
+ * @param {Object} The object to destroy propertiesbak on
  * @param {Object} Exception, do not destroy this property, only delete it.
  */
 function destroyObjectProperties(obj, except) {
@@ -1138,7 +1138,7 @@ pathAnim = {
 						// Fx.prototype.cur does not use fx argument
 						fx = i ? fx : this;
 
-						// Don't run animations on textual properties like align (#1821)
+						// Don't run animations on textual propertiesbak like align (#1821)
 						if (fx.prop === 'align') {
 							return;
 						}
@@ -1339,10 +1339,10 @@ pathAnim = {
 				defaultPrevented;
 	
 			// Remove warnings in Chrome when accessing layerX and layerY. Although Highcharts
-			// never uses these properties, Chrome includes them in the default click event and
+			// never uses these propertiesbak, Chrome includes them in the default click event and
 			// raises the warning when they are copied over in the extend statement below.
 			//
-			// To avoid problems in IE (see #1010) where we cannot delete the properties and avoid
+			// To avoid problems in IE (see #1010) where we cannot delete the propertiesbak and avoid
 			// testing if they are there (warning in chrome) the only option is to test if running IE.
 			if (!isIE && eventArguments) {
 				delete eventArguments.layerX;
@@ -2545,7 +2545,7 @@ SVGElement.prototype = {
 
 	/**
 	 * VML override private method to update elements based on internal
-	 * properties based on SVG transform
+	 * propertiesbak based on SVG transform
 	 */
 	htmlUpdateTransform: function () {
 		// aligning non added elements is expensive
@@ -2601,7 +2601,7 @@ SVGElement.prototype = {
 				yCorr = wrapper.yCorr || 0,
 				currentTextTransform = [rotation, align, elem.innerHTML, wrapper.textWidth].join(',');
 
-			if (currentTextTransform !== wrapper.cTT) { // do the calculations and DOM access only if properties changed
+			if (currentTextTransform !== wrapper.cTT) { // do the calculations and DOM access only if propertiesbak changed
 
 				if (defined(rotation)) {
 
@@ -2681,7 +2681,7 @@ SVGElement.prototype = {
 
 	/**
 	 * Private method to update the transform attribute based on internal
-	 * properties
+	 * propertiesbak
 	 */
 	updateTransform: function () {
 		var wrapper = this,
@@ -2738,7 +2738,7 @@ SVGElement.prototype = {
 	 * @param {String[Object} box The box to align to, needs a width and height. When the
 	 *        box is a string, it refers to an object in the Renderer. For example, when
 	 *        box is 'spacingBox', it refers to Renderer.spacingBox which holds width, height
-	 *        x and y properties.
+	 *        x and y propertiesbak.
 	 *
 	 */
 	align: function (alignOptions, alignByTranslate, box) {
@@ -3122,7 +3122,7 @@ SVGRenderer.prototype = {
 			attr(element, 'xmlns', SVG_NS);
 		}
 
-		// object properties
+		// object propertiesbak
 		renderer.isSVG = true;
 		renderer.box = element;
 		renderer.boxWrapper = boxWrapper;
@@ -3671,7 +3671,7 @@ SVGRenderer.prototype = {
 			},
 			elemWrapper;
 
-		// optional properties
+		// optional propertiesbak
 		if (arguments.length > 1) {
 			extend(attribs, {
 				x: x,
@@ -3730,7 +3730,7 @@ SVGRenderer.prototype = {
 		if (path) {
 
 			obj = this.path(path);
-			// expando properties for use in animate and attr
+			// expando propertiesbak for use in animate and attr
 			extend(obj, {
 				symbolName: symbol,
 				x: x,
@@ -4458,7 +4458,7 @@ SVGRenderer.prototype = {
 		var baseCss = wrapper.css;
 		return extend(wrapper, {
 			/**
-			 * Pick up some properties and apply them to the text instead of the wrapper
+			 * Pick up some propertiesbak and apply them to the text instead of the wrapper
 			 */
 			css: function (styles) {
 				if (styles) {
@@ -5809,7 +5809,7 @@ Tick.prototype = {
 			dateTimeLabelFormat = options.dateTimeLabelFormats[tickPositionInfo.higherRanks[pos] || tickPositionInfo.unitName];
 		}
 
-		// set properties for access in render method
+		// set propertiesbak for access in render method
 		tick.isFirst = isFirst;
 		tick.isLast = isLast;
 
@@ -7866,7 +7866,7 @@ Axis.prototype = {
 		this.bottom = chart.chartHeight - height - top;
 		this.right = chart.chartWidth - width - left;
 
-		// Direction agnostic properties
+		// Direction agnostic propertiesbak
 		this.len = mathMax(horiz ? width : height, 0); // mathMax fixes #905
 		this.pos = horiz ? left : top; // distance from SVG origin
 	},
@@ -11615,7 +11615,7 @@ Chart.prototype = {
 	},
 
 	/**
-	 * Set the public chart properties. This is done before and after the pre-render
+	 * Set the public chart propertiesbak. This is done before and after the pre-render
 	 * to determine margin sizes
 	 */
 	setChartSize: function (skipAxes) {
@@ -11804,7 +11804,7 @@ Chart.prototype = {
 	/**
 	 * Detect whether a certain chart property is needed based on inspecting its options
 	 * and series. This mainly applies to the chart.invert property, and in extensions to 
-	 * the chart.angular and chart.polar properties.
+	 * the chart.angular and chart.polar propertiesbak.
 	 */
 	propFromSeries: function () {
 		var chart = this,
@@ -11820,7 +11820,7 @@ Chart.prototype = {
 			// The default series type's class
 			klass = seriesTypes[optionsChart.type || optionsChart.defaultSeriesType];
 			
-			// Get the value from available chart-wide properties
+			// Get the value from available chart-wide propertiesbak
 			value = (
 				chart[key] || // 1. it is set before
 				optionsChart[key] || // 2. it is set in the options
@@ -12018,7 +12018,7 @@ Chart.prototype = {
 			series[i] = series[i].destroy();
 		}
 
-		// ==== Destroy chart properties:
+		// ==== Destroy chart propertiesbak:
 		each(['title', 'subtitle', 'chartBackground', 'plotBackground', 'plotBGImage', 
 				'plotBorder', 'seriesGroup', 'clipRect', 'credits', 'pointer', 'scroller', 
 				'rangeSelector', 'legend', 'resetZoomButton', 'tooltip', 'renderer'], function (name) {
@@ -12097,7 +12097,7 @@ Chart.prototype = {
 		chart.resetMargins();
 		chart.setChartSize();
 
-		// Set the common chart properties (mainly invert) from the given series
+		// Set the common chart propertiesbak (mainly invert) from the given series
 		chart.propFromSeries();
 
 		// get axes
@@ -12186,7 +12186,7 @@ Point.prototype = {
 		return point;
 	},
 	/**
-	 * Apply the options containing the x and y data and possible some extra properties.
+	 * Apply the options containing the x and y data and possible some extra propertiesbak.
 	 * This is called on point init or from point.update.
 	 *
 	 * @param {Object} options
@@ -12789,7 +12789,7 @@ Series.prototype = {
 	},
 	
 	/**
-	 * Set the xAxis and yAxis properties of cartesian series, and register the series
+	 * Set the xAxis and yAxis propertiesbak of cartesian series, and register the series
 	 * in the axis.series array
 	 */
 	bindAxes: function () {
@@ -13149,7 +13149,7 @@ Series.prototype = {
 			names = xAxis && xAxis.categories && !xAxis.categories.length ? [] : null,
 			i;
 
-		// reset properties
+		// reset propertiesbak
 		series.xIncrement = null;
 		series.pointRange = xAxis && xAxis.categories ? 1 : options.pointRange;
 
@@ -13353,7 +13353,7 @@ Series.prototype = {
 			}
 		}
 
-		// Record the properties
+		// Record the propertiesbak
 		series.cropped = cropped; // undefined or true
 		series.cropStart = cropStart;
 		series.processedXData = processedXData;
@@ -13921,7 +13921,7 @@ Series.prototype = {
 		// Initialize the animation. Set up the clipping rectangle.
 		if (init) { 
 			
-			// If a clipping rectangle with the same properties is currently present in the chart, use that. 
+			// If a clipping rectangle with the same propertiesbak is currently present in the chart, use that.
 			clipRect = chart[sharedClipKey];
 			markerClipRect = chart[sharedClipKey + 'm'];
 			if (!clipRect) {
@@ -14062,7 +14062,7 @@ Series.prototype = {
 	},
 
 	/**
-	 * Convert state properties from API naming conventions to SVG attributes
+	 * Convert state propertiesbak from API naming conventions to SVG attributes
 	 *
 	 * @param {Object} options API options object
 	 * @param {Object} base1 SVG attribute object to inherit from
@@ -16273,7 +16273,7 @@ var PieSeries = {
 	},
 
 	/**
-	 * Extend the generatePoints method by adding total and percentage properties to each point
+	 * Extend the generatePoints method by adding total and percentage propertiesbak to each point
 	 */
 	generatePoints: function () {
 		var i,
@@ -16296,7 +16296,7 @@ var PieSeries = {
 		}
 		this.total = total;
 
-		// Set each point's properties
+		// Set each point's propertiesbak
 		for (i = 0; i < len; i++) {
 			point = points[i];
 			point.percentage = total > 0 ? (point.y / total) * 100 : 0;

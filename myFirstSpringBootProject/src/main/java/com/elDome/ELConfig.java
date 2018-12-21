@@ -12,7 +12,7 @@ import org.springframework.core.io.Resource;
 
 @Configuration
 @ComponentScan("com.elDome")
-@PropertySource("classpath:elTest.properties")
+@PropertySource("classpath:elTest.propertiesbak")
 public class ELConfig {
     @Value("I love you")
     private String normal;//普通字符注入

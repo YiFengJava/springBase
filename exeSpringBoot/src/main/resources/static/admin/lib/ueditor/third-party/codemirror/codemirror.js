@@ -2586,7 +2586,7 @@ var CodeMirror = (function() {
 
     // Detect drag-and-drop
     var dragAndDrop = function() {
-        // IE8 has ondragstart and ondrop properties, but doesn't seem to
+        // IE8 has ondragstart and ondrop propertiesbak, but doesn't seem to
         // actually support ondragstart the way it's supposed to work.
         if (/MSIE [1-8]\b/.test(navigator.userAgent)) return false;
         var div = document.createElement('div');
