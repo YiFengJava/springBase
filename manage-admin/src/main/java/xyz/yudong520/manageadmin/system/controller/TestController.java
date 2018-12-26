@@ -56,4 +56,16 @@ public class TestController {
         return authorityService.getTokenByGsid(username);
     }
 
+    @GetMapping(value = "/page1")
+    public String  page1(){
+        return  "login2.html";
+    }
+
+    @GetMapping(value ="/page2" )
+    public String  page2(){
+        return  "register.html";
+    }
+
+
+
 }

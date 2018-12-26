@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
@@ -61,20 +62,27 @@ public class SecurityConfig extends FormLoginConfig {
                 .headers().frameOptions().disable()  //用iframe
                 .and()
                 .authorizeRequests() //请求授权
-                .antMatchers( "/login/auth","/login/page","/login/logout","/session/invalid",
+                .antMatchers( "/login/auth",
+                        "/login/page",
+                        "/login/logout",
+                        "/session/invalid",
                         "/code/*",
                         "auth/qq",
-                        "/login/regist",
+                        "/login/register",
+                        "/login/mobilePage",
                         "/signin",
                         "/login/smsLogin",
+                        "/page/**",
                         "/css/**","/fonts/**","/images/**","/js/**","/json/**","/skin/**","/*.ico")
-                .permitAll()       //上面的匹配都允许通过
+                 .permitAll()       //上面的匹配都允许通过
                 .anyRequest().authenticated()   //任何请求都需要认证
                 .and()
                 .sessionManagement()   //session管理
+                .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .invalidSessionUrl("/session/invalid") //session失效的回跳地址
                 .maximumSessions(1)  //最大链接数
                 .expiredSessionStrategy(sessionStrategy) //session失效，过期处理
+                .expiredUrl("/session/invalid")
                 .maxSessionsPreventsLogin(false)
                 .and()
                 .and()

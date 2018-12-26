@@ -8,7 +8,7 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
 
 
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds=60)
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds=180)
 public class SessionConfig {
     /**
      * `@EnableRedisHttpSession` 这个注解创建了一个名为 springSessionRepositoryFilter

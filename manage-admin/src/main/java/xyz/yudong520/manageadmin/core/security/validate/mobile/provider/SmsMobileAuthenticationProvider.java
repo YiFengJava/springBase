@@ -18,7 +18,7 @@ public class SmsMobileAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         SmsMobileAuthenticationToken token=(SmsMobileAuthenticationToken) authentication;
         String mobile =(String) token.getPrincipal();
-        User user = securityService.loadUserByMobile(mobile);
+        User user = securityService.loadUserByUsername(mobile);
         if(user==null){
             throw new InternalAuthenticationServiceException("无法获取用户信息");
         }

@@ -35,9 +35,13 @@ public class UserServiceImpl implements UserService {
 //                .withIgnorePaths("password");//忽略字段，即不管password是什么值都不加入查询条件
         Example<User> example = Example.of(user ,matcher);
         Optional<User> one = userDao.findOne(example);
-        User user1 = one.get();
-        setAuthoritiesForUser(user1);
-        return user1;
+        try {
+            User user1 = one.get();
+            setAuthoritiesForUser(user1);
+            return user1;
+        }catch (Exception e){
+            return  null;
+        }
     }
 
     @Override

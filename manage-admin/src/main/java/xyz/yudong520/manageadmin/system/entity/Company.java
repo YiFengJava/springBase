@@ -1,10 +1,14 @@
 package xyz.yudong520.manageadmin.system.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -35,9 +39,13 @@ public class Company implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date createdTime;
 
+    @ApiModelProperty(hidden=true)
+    @JsonIgnore
     @OneToMany(cascade=CascadeType.REMOVE,fetch=FetchType.LAZY,mappedBy="company",orphanRemoval=false)
     private List<Community> communityList;
 
+    @ApiModelProperty(hidden=true)
+    @JsonIgnore
     @OneToMany(cascade=CascadeType.REMOVE,fetch=FetchType.LAZY,mappedBy="company",orphanRemoval=false)
     private List<Dept> deptList;
 

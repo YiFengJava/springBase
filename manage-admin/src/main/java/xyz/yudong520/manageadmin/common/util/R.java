@@ -2,6 +2,8 @@ package xyz.yudong520.manageadmin.common.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 //import io.swagger.annotations.ApiModel;
 //import io.swagger.annotations.ApiModelProperty;
 
@@ -10,22 +12,22 @@ import java.util.List;
 /**
  * 自定义响应结构
  */
-//@ApiModel(value="响应对象",description="手机端响应对象R")
+@ApiModel(value="响应对象",description="api接口响应对象数据结构")
 public class R {
 
     // 定义jackson对象
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     // 响应业务状态
-//    @ApiModelProperty(value="状态码",name="code",example="200")
+    @ApiModelProperty(value="状态码",name="code",example="200")
     private Integer code;
 
     // 响应消息
-//    @ApiModelProperty(value="状态信息",name="message",example="OK")
+    @ApiModelProperty(value="状态信息",name="message",example="OK")
     private String message;
 
     // 响应中的数据
-//    @ApiModelProperty(value="具体数据",name="data")
+    @ApiModelProperty(value="具体数据",name="data")
     private Object data;
 
     public static R build(Integer status, String msg, Object data) {

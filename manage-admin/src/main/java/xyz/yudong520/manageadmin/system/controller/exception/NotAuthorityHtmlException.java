@@ -1,5 +1,4 @@
 package xyz.yudong520.manageadmin.system.controller.exception;
-
 public class NotAuthorityHtmlException extends Exception{
     private  String message;
 

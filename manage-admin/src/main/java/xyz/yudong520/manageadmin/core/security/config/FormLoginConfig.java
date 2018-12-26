@@ -21,6 +21,10 @@ public class FormLoginConfig
     @Autowired
     private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
 
+    @Autowired
+    private MySecurityContextLogoutHandler mySecurityContextLogoutHandler;
+
+
     /**
      * 加入用户名密码登陆的配置
      * @param http
@@ -42,7 +46,7 @@ public class FormLoginConfig
                 .logoutUrl("/login/logout")
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/login/logoutsuccess")
-                .addLogoutHandler(new MySecurityContextLogoutHandler())
+                .addLogoutHandler(mySecurityContextLogoutHandler)
                 .invalidateHttpSession(true);
 //                .permitAll();
     }

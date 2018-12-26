@@ -1,7 +1,6 @@
 package xyz.yudong520.manageadmin.core.security.handler;
 
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +14,8 @@ import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import xyz.yudong520.manageadmin.core.security.authorized.ReturnType;
+import xyz.yudong520.manageadmin.core.security.properties.SecurityCommon;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,17 +34,21 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
     private ObjectMapper objectMapper;
 
     //日志打印
-    private Logger logger= LoggerFactory.getLogger(MyAuthenticationSuccessHandler.class);
+    private Logger logger = LoggerFactory.getLogger(MyAuthenticationSuccessHandler.class);
 
+    @Autowired
+    private SecurityCommon securityCommon;
 
     //请求转发的处理工具
-    private RedirectStrategy redirectStrategy =new DefaultRedirectStrategy();
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     private RequestCache requestCache = new HttpSessionRequestCache();
 
-    private String targetUrl="/index";
+    private String targetUrl = "/index";
+
     /**
      * 登陆成功要执行的方法
+     *
      * @param httpServletRequest
      * @param httpServletResponse
      * @param authentication
@@ -52,27 +57,34 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
      */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-            logger.info("登陆成功！--");
-        SavedRequest savedRequest = this.requestCache.getRequest(httpServletRequest, httpServletResponse);
-        if (savedRequest == null) {
-            super.onAuthenticationSuccess(httpServletRequest, httpServletResponse, authentication);
-        } else {
-            String targetUrlParameter = this.getTargetUrlParameter();
-            if (!this.isAlwaysUseDefaultTargetUrl() && (targetUrlParameter == null || !StringUtils.hasText(httpServletRequest.getParameter(targetUrlParameter)))) {
-                this.clearAuthenticationAttributes(httpServletRequest);
-//                String targetUrl = savedRequest.getRedirectUrl();
-                this.logger.debug("Redirecting to DefaultSavedRequest Url: " + targetUrl);
-                this.getRedirectStrategy().sendRedirect(httpServletRequest, httpServletResponse, targetUrl);
-            } else {
-                this.requestCache.removeRequest(httpServletRequest, httpServletResponse);
+        logger.info("登陆成功！--");
+        if(ReturnType.JSON.equals(securityCommon.getReturnType())){
+            //设置返回类型
+            httpServletResponse.setContentType("application/json;charset=UTF-8");
+            //返回认证信息
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(authentication));
+        }else{
+            SavedRequest savedRequest = this.requestCache.getRequest(httpServletRequest, httpServletResponse);
+            if (savedRequest == null) {
                 super.onAuthenticationSuccess(httpServletRequest, httpServletResponse, authentication);
-            }
+            } else {
+                String targetUrlParameter = this.getTargetUrlParameter();
+                if (!this.isAlwaysUseDefaultTargetUrl() && (targetUrlParameter == null || !StringUtils.hasText(httpServletRequest.getParameter(targetUrlParameter)))) {
+                    this.clearAuthenticationAttributes(httpServletRequest);
+//                String targetUrl = savedRequest.getRedirectUrl();
+                    this.logger.debug("Redirecting to DefaultSavedRequest Url: " + targetUrl);
+                    this.getRedirectStrategy().sendRedirect(httpServletRequest, httpServletResponse, targetUrl);
+                } else {
+                    this.requestCache.removeRequest(httpServletRequest, httpServletResponse);
+                    super.onAuthenticationSuccess(httpServletRequest, httpServletResponse, authentication);
+                }
+        }
         }
 
 //        super.onAuthenticationSuccess(httpServletRequest,httpServletResponse,authentication);
 //        redirectStrategy.sendRedirect(httpServletRequest,httpServletResponse,"/");
 
-            //执行该方法表示登陆成功 判断是否为Json
+        //执行该方法表示登陆成功 判断是否为Json
 //            if(LoginType.JSON.equals(securityProperties.getBrowser().getLoginType())){
 //                //设置返回类型
 //                httpServletResponse.setContentType("application/json;charset=UTF-8");

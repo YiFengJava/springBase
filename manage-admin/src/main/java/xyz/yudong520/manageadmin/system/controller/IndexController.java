@@ -1,7 +1,6 @@
 package xyz.yudong520.manageadmin.system.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,25 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import xyz.yudong520.manageadmin.common.dto.MenuTree;
+import xyz.yudong520.manageadmin.common.util.R;
 import xyz.yudong520.manageadmin.core.security.support.SimpleResponse;
 import xyz.yudong520.manageadmin.system.entity.Permissions;
 import xyz.yudong520.manageadmin.system.entity.User;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
 @Controller
-public class IndexController {
+public class IndexController extends  BaseController{
 
     //跳转登陆成功页面
     @GetMapping(value = "/index")
     public String loginSuccessPage(Model model){
-        //获取该管理用户的授权信息
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //在授权信息中获取用户个人基本信息
-        User user = (User) authentication.getPrincipal();
+        User user = getCurrentUser();
         //获取管理员的所有的权限列表
         Set<Permissions> authorities = user.getAuthorities();
         //格式属性菜单树结构
@@ -78,8 +74,6 @@ public class IndexController {
         return  menuTree;
     }
 
-
-
     //调整默认加载的首页
     @GetMapping(value = "/index_home")
     public String indexHomePage(Model model){
@@ -88,14 +82,21 @@ public class IndexController {
         return  "index_home.html";
     }
 
-    //失效跳转页面
-    @GetMapping(value = "/session/invalid")
-    public String sessionInvalid() {
-        log.info("session失效，跳转登陆页面");
-        return "login.html";
+//    //失效跳转页面
+//    @GetMapping(value = "/session/invalid")
+//    public String sessionInvalid() {
+//        log.info("session失效，跳转登陆页面");
+//        return "login.html";
+//    }
+    @GetMapping("/session/invalid")
+    @ResponseBody
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public R sessionInvalid() {
+        return R.build(HttpStatus.UNAUTHORIZED.value(), "session失效",null);
     }
 
-    //失效跳转页面
+
+     //失效跳转页面
     @GetMapping(value = "/sessionid")
     @ResponseBody
     public SimpleResponse sessionId(HttpServletRequest request) {

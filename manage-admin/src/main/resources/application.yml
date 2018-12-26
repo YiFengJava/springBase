@@ -1,23 +1,8 @@
-mysecurity:
-    socialProperties:
-        qqProperties:
-            provider-id: qq
-            app-id: 101521863
-            app-secret: a4098bc6065314509978c77952d5a15e
-    browser:
-#        loginPage: /demo-signLogin.html
-        loginType: JSON
-    validate:
-        image:
-            width: 100
-            height: 32
-            length: 6
-            expireIn: 60
-        smsCode:
-            length: 6
-            expireIn: 60
 
+##自定义配置
 ydsecurity:
+    swagger-open: true
+    return_type : HTML
     validate_code:
         image_code:
             width: 100
@@ -110,6 +95,7 @@ datasource:
 
         
     jpa:
+        open-in-view: true
         hibernate:
             ddl-auto: update
         show-sql: true
