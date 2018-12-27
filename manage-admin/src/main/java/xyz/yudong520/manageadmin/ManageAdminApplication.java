@@ -5,9 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ManageAdminApplication {
-
-
-
 //    restful api
 //
 //    查询   /user/query？name=avb            /user?name=tom          get
@@ -19,8 +16,6 @@ public class ManageAdminApplication {
 //            2，使用http方法描述行为，使用http状态码来表示不同的结果
 //            3，使用json交互数据
 //            4，restful只是一个风格，不是强制的标准
-
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(ManageAdminApplication.class, args);
