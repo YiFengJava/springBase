@@ -1,0 +1,33 @@
+spring:
+    application:
+        name: server-provider1
+    profiles:
+        active:  singlton
+server:
+    port: 10001
+
+---
+spring:
+    profiles: singlton
+eureka:
+    client:
+        serviceUrl:
+             defaultZone: http://server1:9091/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-provider1-10001
+        hostname: server-provider1-hostname
+
+
+---
+spring:
+    profiles: cluster
+eureka:
+    client:
+        serviceUrl:
+             defaultZone: http://server1:9091/eureka/,http://server2:9092/eureka/,http://server3:9093/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-provider1-10001
+        hostname: server-provider1-hostname
+

@@ -1,0 +1,24 @@
+spring:
+    application:
+        name: eureka-server
+    profiles:
+        active: server2
+    cloud:
+        config:
+            enabled: false
+---
+spring:
+    profiles: server2
+server:
+    port: 9092
+eureka:
+    instance:
+        instance-id: eureka-server-9092
+        prefer-ip-address: true
+        hostname: eureka-server-hostname2
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        serviceUrl:
+            defaultZone: http://server1:9091/eureka/,http://server3:9093/eureka/
+

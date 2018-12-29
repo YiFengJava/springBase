@@ -1,0 +1,37 @@
+spring:
+    application:
+        name: server-consumer1
+    profiles:
+        active: singlton
+#演示服务的基本消费，即熔断的基本使用
+feign:
+    hystrix:
+        enabled: true
+---
+spring:
+    profiles: singlton
+server:
+    port: 20001
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-consumer1-20001
+        hostname: server-consumer-hostname1
+
+---
+spring:
+    profiles: cluster
+server:
+    port: 20001
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/,http://server2:9092/eureka/,http://server3:9093/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-consumer1-20001
+        hostname: server-consumer-hostname1
+

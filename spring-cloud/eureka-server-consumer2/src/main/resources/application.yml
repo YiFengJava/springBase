@@ -1,0 +1,36 @@
+spring:
+    application:
+        name: server-consumer2
+    profiles:
+        active: singlton
+#        基本的熔断监控熔断监控，仪表盘
+server:
+    port: 20002
+feign:
+    hystrix:
+        enabled: true
+---
+spring:
+    profiles: singlton
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-consumer1-20002
+        hostname: server-consumer-hostname2
+---
+spring:
+    profiles: cluster
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/,http://server2:9092/eureka/,http://server3:9093/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-consumer1-20002
+        hostname: server-consumer-hostname2
+
+
+

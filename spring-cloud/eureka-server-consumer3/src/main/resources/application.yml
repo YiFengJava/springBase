@@ -1,0 +1,49 @@
+spring:
+    application:
+        name: server-consumer3
+    profiles:
+        active: singlton
+#        基本的熔断监控熔断监控，仪表盘  用turbine集群监控
+server:
+    port: 20003
+feign:
+    hystrix:
+        enabled: true
+
+
+#management:
+#    endpoints:
+#        web:
+#            exposure:
+#                include: '*'
+#    endpoint:
+#        health:
+#            show-details: ALWAYS
+
+turbine:
+    appConfig: server-consumer1,server-consumer2    #  配置Eureka中的serviceId列表，表明监控哪些服务
+    aggregator:
+        clusterConfig: MAIN   # 指定聚合哪些集群，多个使用","分割，默认为default。
+    clusterNameExpression: metadata['cluster']
+---
+spring:
+    profiles: singlton
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-consumer3-20003
+        hostname: server-consumer-hostname3
+---
+spring:
+    profiles: cluster
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/,http://server2:9092/eureka/,http://server3:9093/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: server-consumer3-20003
+        hostname: server-consumer-hostname3

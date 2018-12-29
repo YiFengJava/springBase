@@ -1,0 +1,41 @@
+spring:
+    application:
+        name: eureka-server
+    profiles:
+        active: singlton
+    cloud:
+        config:
+            enabled: false
+---
+spring:
+    profiles: cluster
+server:
+    port: 9091
+eureka:
+    instance:
+        instance-id: eureka-server-9091
+        prefer-ip-address: true
+        hostname: eureka-server-hostname1
+    client:
+           registerWithEureka: false
+           fetchRegistry: false
+           serviceUrl:
+               defaultZone: http://server2:9092/eureka/,http://server3:9093/eureka/
+---
+ spring:
+     profiles: singlton
+ server:
+     port: 9091
+ eureka:
+     instance:
+         instance-id: eureka-server-9091
+         prefer-ip-address: true
+         hostname: eureka-server-hostname
+     client:
+         registerWithEureka: false
+         fetchRegistry: false
+         serviceUrl:
+             defaultZone: http://server1:9091/eureka/
+
+
+
