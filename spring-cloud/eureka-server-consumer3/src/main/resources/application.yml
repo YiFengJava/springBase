@@ -11,17 +11,9 @@ feign:
         enabled: true
 
 
-#management:
-#    endpoints:
-#        web:
-#            exposure:
-#                include: '*'
-#    endpoint:
-#        health:
-#            show-details: ALWAYS
 
 turbine:
-    appConfig: server-consumer1,server-consumer2    #  配置Eureka中的serviceId列表，表明监控哪些服务
+    appConfig: server-consumer1,server-consumer2    #  配置Eureka中的serviceId列表，表明监控哪些服务  dsfdsf
     aggregator:
         clusterConfig: MAIN   # 指定聚合哪些集群，多个使用","分割，默认为default。
     clusterNameExpression: metadata['cluster']
