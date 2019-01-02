@@ -6,7 +6,7 @@ spring:
     cloud:
         config:
             discovery:
-                enabled: true
+                enabled: false
 ---
 spring:
     profiles: cluster

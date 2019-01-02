@@ -9,7 +9,8 @@ spring:
                 enabled: true
                 serviceId: config-server
             name: server-consumer1
-            profile: dev
+            profile: ${spring.profiles.active}
+            label: ${spring.profiles.active}
 
 #演示服务的基本消费，即熔断的基本使用
 feign:
