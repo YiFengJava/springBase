@@ -3,6 +3,12 @@ spring:
         name: server-consumer1
     profiles:
         active: singlton
+    cloud:
+        config:
+            discovery:
+                enabled: true
+                serviceId: config-server
+
 #演示服务的基本消费，即熔断的基本使用
 feign:
     hystrix:

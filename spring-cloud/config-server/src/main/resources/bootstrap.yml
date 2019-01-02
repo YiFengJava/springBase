@@ -5,6 +5,8 @@ server:
 spring:
     application:
         name: config-server
+    profiles:
+        active: singlton
     cloud:
         config:
             server:
@@ -19,3 +21,29 @@ spring:
 #                    force-pull: true
 #                    username: YiFengJava
 #                    password:
+
+
+---
+spring:
+    profiles: singlton
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: config-server-8888
+        hostname: config-server-hostname
+
+---
+spring:
+    profiles: cluster
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://server1:9091/eureka/,http://server2:9092/eureka/,http://server3:9093/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: config-server-8888
+        hostname: config-server-hostname
+
