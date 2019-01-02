@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/eureka-server-consumer1/eureka-server-consumer1.iml" filepath="$PROJECT_DIR$/spring-cloud/eureka-server-consumer1/eureka-server-consumer1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/eureka-server-consumer2/eureka-server-consumer2.iml" filepath="$PROJECT_DIR$/spring-cloud/eureka-server-consumer2/eureka-server-consumer2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/eureka-server-consumer3/eureka-server-consumer3.iml" filepath="$PROJECT_DIR$/spring-cloud/eureka-server-consumer3/eureka-server-consumer3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/eureka-server-provider1/eureka-server-provider1.iml" filepath="$PROJECT_DIR$/spring-cloud/eureka-server-provider1/eureka-server-provider1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/eureka-server1/eureka-server1.iml" filepath="$PROJECT_DIR$/spring-cloud/eureka-server1/eureka-server1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/eureka-server2/eureka-server2.iml" filepath="$PROJECT_DIR$/spring-cloud/eureka-server2/eureka-server2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/eureka-server3/eureka-server3.iml" filepath="$PROJECT_DIR$/spring-cloud/eureka-server3/eureka-server3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mySpringBase.iml" filepath="$PROJECT_DIR$/mySpringBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/spring-cloud.iml" filepath="$PROJECT_DIR$/spring-cloud/spring-cloud.iml" />
+    </modules>
+  </component>
+</project>
