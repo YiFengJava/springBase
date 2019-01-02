@@ -5,7 +5,8 @@ spring:
         active: singlton
     cloud:
         config:
-            enabled: true
+            discovery:
+                enabled: true
 ---
 spring:
     profiles: cluster

@@ -3,22 +3,19 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/spring-cloud/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/manage-admin/pom.xml" />
-        <option value="$PROJECT_DIR$/springsecuritystudy/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud/eureka-server1/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud/config-server/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/springsecuritystudy/pom.xml" />
-        <option value="$PROJECT_DIR$/springsecuritystudy/security-app/pom.xml" />
-        <option value="$PROJECT_DIR$/springsecuritystudy/security-browser/pom.xml" />
-        <option value="$PROJECT_DIR$/springsecuritystudy/security-core/pom.xml" />
-        <option value="$PROJECT_DIR$/springsecuritystudy/security-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud/eureka-server-provider/pom.xml" />
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
   </component>
 </project>
