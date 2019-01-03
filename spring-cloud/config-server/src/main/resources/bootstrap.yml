@@ -5,8 +5,8 @@ server:
 spring:
     application:
         name: config-server
-    profiles:
-        active: singlton
+#    profiles:
+#        active: singlton
     cloud:
         config:
             server:
@@ -19,13 +19,13 @@ spring:
 #                    basedir: /YiFengJava/config
 #                    # 配置中心通过git从远程git库，有时本地的拷贝被污染，这时配置中心无法从远程库更新本地配置,设置force-pull=true，则强制从远程库中更新本地库
 #                    force-pull: true
-#                    username: YiFengJava
-#                    password:
+                    username: YiFengJava
+                    password:
 
 
----
-spring:
-    profiles: singlton
+#---
+#spring:
+#    profiles: singlton
 eureka:
     client:
         serviceUrl:
@@ -34,16 +34,16 @@ eureka:
         prefer-ip-address: true
         instance-id: config-server-8888
         hostname: config-server-hostname
-
----
-spring:
-    profiles: cluster
-eureka:
-    client:
-        serviceUrl:
-              defaultZone: http://server1:9091/eureka/,http://server2:9092/eureka/,http://server3:9093/eureka/
-    instance:
-        prefer-ip-address: true
-        instance-id: config-server-8888
-        hostname: config-server-hostname
-
+#
+#---
+#spring:
+#    profiles: cluster
+#eureka:
+#    client:
+#        serviceUrl:
+#              defaultZone: http://server1:9091/eureka/,http://server2:9092/eureka/,http://server3:9093/eureka/
+#    instance:
+#        prefer-ip-address: true
+#        instance-id: config-server-8888
+#        hostname: config-server-hostname
+#
